@@ -1493,7 +1493,7 @@ if (isset($_GET['to'])) {
 																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-1.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-1.jpeg 1295w, /Assets/images/Gallery-1.jpeg 300w, /Assets/images/Gallery-1.jpeg 1024w, /Assets/images/Gallery-1.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Kampus umm adalah awal tempat kami bertemu untuk pertama kali, dan kami adalah teman sekelas waktu itu</p>
+																		<p>Kampus UMM adalah tempat kami bertemu untuk pertama kali. Waktu itu kami adalah teman sekelas.</p>
 																	</div>
 																</div>
 															</div>
@@ -1511,7 +1511,7 @@ if (isset($_GET['to'])) {
 																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-2.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-2.jpeg 1295w, /Assets/images/Gallery-2.jpeg 300w, /Assets/images/Gallery-2.jpeg 1024w, /Assets/images/Gallery-2.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Setelah berteman dan memalui beberapa semester , pertemanan kami berlanjut menjadi ketertarikan yang lebih serius , 7 maret 2017 awal mulai hubungan ini.</p>
+																		<p>Kami berteman dan berkuliah bersama. Setelah beberapa semester, pertemanan kami berlanjut menjadi ketertarikan yang lebih serius. 7 Maret 2017 kami memulai hubungan ini.</p>
 																	</div>
 																</div>
 															</div>
@@ -1529,7 +1529,7 @@ if (isset($_GET['to'])) {
 																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-3.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-3.jpeg 1295w, /Assets/images/Gallery-3.jpeg 300w, /Assets/images/Gallery-3.jpeg 1024w, /Assets/images/Gallery-3.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Setelah 6 tahun setengah kita menjalani hubungan yang penuh lika liku dan pernah menjalani LDR di tengah hubungan, dan tgl 17 februari kita melakukan pertemuan keluarga untuk pertama kalinya, dan tgl 30 oktober 2023 kami sepakat untuk membangun bahtera rumah tangga bersama.</p>
+																		<p>Setelah 6 tahun lebih kami menjalani hubungan yang penuh lika-liku dan pernah menjalani LDR di tengah hubungan, pada 17 Februari kami melakukan pertemuan keluarga untuk pertama kalinya. 30 oktober 2023 kami sepakat untuk membangun bahtera rumah tangga bersama.</p>
 																	</div>
 																</div>
 															</div>
