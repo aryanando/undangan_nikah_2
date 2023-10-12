@@ -2463,35 +2463,17 @@ if (isset($_GET['to'])) {
 																							</div>
 																						</form>
 																						<center>
-																						<button id='submit-comment' class="btn btn-primary">KIRIM</button>
+																							<button id='submit-comment' class="btn btn-primary">KIRIM</button>
 																						</center>
-																						
-																						<script>
-																							$("#submit-comment").click(function() {
-																								console.log($("#comentNama").val());
-																								console.log($("#comentTextarea").val());
-																								$.ajax({
-																									type: "POST",
-																									url: "<?= $base_url ?>/add-coment.php",
-																									data: {
-																										nama: $("#comentNama").val(),
-																										content: $("#comentTextarea").val()
-																									},
-																									success: function(data) {
-																										console.log(data);
-																									}
-																									// dataType: dataType
-																								});
 
-																							});
-																						</script>
+
 																					</div>
 																				</div><!--.cui-container-form-->
 																			</div><!--.cui-clearfix cui-relative-->
 																		</div><!--.cui-wrap-form-->
 																		<div id='cui-comment-status-716' class='cui-comment-status'></div>
 																		<div id="cui-box" class="cui-box">
-																			<ul id="cui-container-comment-98931" class="cui-container-comments cui-order-DESC  cui-has-7-comments cui-multiple-comments" data-order="DESC" style="display: block;">
+																			<ul id="cui-container-comment" class="cui-container-comments cui-order-DESC  cui-has-7-comments cui-multiple-comments" data-order="DESC" style="display: block;">
 
 																				<?php while ($coment = mysqli_fetch_array($coments_data)) { ?>
 
@@ -2500,32 +2482,56 @@ if (isset($_GET['to'])) {
 
 																							<div class="cui-comment-avatar">
 																								<img src="">
-																							</div><!--.cui-comment-avatar-->
-
+																							</div>
 																							<div class="cui-comment-content">
 																								<div class="cui-comment-info">
 																									<a class="cui-commenter-name" title="<?= htmlspecialchars($coment['nama'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($coment['nama'], ENT_QUOTES, 'UTF-8') ?></a>
-																
-																								</div><!--.cui-comment-info-->
+
+																								</div>
 																								<div class="cui-comment-text">
 																									<p><?= htmlspecialchars($coment['content'], ENT_QUOTES, 'UTF-8') ?></p>
-																								</div><!--.cui-comment-text-->
+																								</div>
 
 																								<div class="cui-comment-actions">
 																									<span class="cui-comment-time"><i class="far fa-clock"></i>
 																										<?= htmlspecialchars($coment['time'], ENT_QUOTES, 'UTF-8') ?> </span>
-																									<!-- <a href="?comment_id=58394&amp;post_id=98931" class="cui-reply-link" id="cui-reply-link-58394">Reply</a> -->
-																								</div><!--.cui-comment-actions-->
+																									
+																								</div>
 
-																							</div><!--.cui-comment-content-->
-																						</div><!--.cui-comment-->
-																						<!--</li>-->
-																					</li><!-- #comment-## -->
+																							</div>
+																						</div>
+																						
+																					</li>
 
 																				<?php } ?>
 																			</ul>
 																		</div>
 																		<div class='cui-holder-716 cui-holder'></div>
+																		<script>
+																			$("#submit-comment").click(function() {
+																				console.log($("#comentNama").val());
+																				console.log($("#comentTextarea").val());
+																				$.ajax({
+																					type: "POST",
+																					url: "<?= $base_url ?>/add-coment.php",
+																					data: {
+																						nama: $("#comentNama").val(),
+																						content: $("#comentTextarea").val()
+																					},
+																					success: function(data) {
+																						if (data === "Comment added successfully.") {
+																							$("#cui-container-comment").append(
+																								"<li class='comment even thread-even depth-1 cui-item-comment' data-likes='0'><div id='cui-comment-58394' class='cui-comment cui-clearfix'><div class='cui-comment-avatar'><img src=''></div><div class='cui-comment-content'><div class='cui-comment-info'><a class='cui-commenter-name' title='"+$("#comentTextarea").val()+"'>"+$("#comentTextarea").val()+"</a></div><div class='cui-comment-text'><p>"+$("#comentTextarea").val()+"</p></div><div class='cui-comment-actions'><span class='cui-comment-time'><i class='far fa-clock'></i>"+Date($.now())+"</span>	</div></div></div>	</li>"
+																							)																			
+																						} else {
+																							alert("Anda telah membuat comment");
+																						};
+																					}
+																					// dataType: dataType
+																				});
+
+																			});
+																		</script>
 																	</div><!--.cui-wrap-comments-->
 																</div><!--.cui-wrapper-->
 															</div>

@@ -8,9 +8,18 @@
         include_once("./config-database.php");
                 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO coments(nama,content) VALUES('$nama','$content')");
+
+        try {
+            mysqli_query($mysqli, "INSERT INTO coments(nama,content) VALUES('$nama','$content')");
+            // Show message when user added
+            echo "Comment added successfully.";
+
+        } catch (\Throwable $th) {
+            // Show message when user added
+            echo "Gagal kemungkinan anda telah memasukkan comment.";
+        }
         
-        // Show message when user added
-        echo "Comment added successfully.";
+        
+        
     }
 ?>
