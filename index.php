@@ -2521,8 +2521,9 @@ if (isset($_GET['to'])) {
 																					success: function(data) {
 																						if (data === "Comment added successfully.") {
 																							$("#cui-container-comment").append(
-																								"<li class='comment even thread-even depth-1 cui-item-comment' data-likes='0'><div id='cui-comment-58394' class='cui-comment cui-clearfix'><div class='cui-comment-avatar'><img src=''></div><div class='cui-comment-content'><div class='cui-comment-info'><a class='cui-commenter-name' title='"+$("#comentTextarea").val()+"'>"+$("#comentTextarea").val()+"</a></div><div class='cui-comment-text'><p>"+$("#comentTextarea").val()+"</p></div><div class='cui-comment-actions'><span class='cui-comment-time'><i class='far fa-clock'></i>"+Date($.now())+"</span>	</div></div></div>	</li>"
-																							)																			
+																								"<li class='comment even thread-even depth-1 cui-item-comment' data-likes='0'><div id='cui-comment-58394' class='cui-comment cui-clearfix'><div class='cui-comment-avatar'><img src=''></div><div class='cui-comment-content'><div class='cui-comment-info'><a class='cui-commenter-name' title='"+$("#comentNama").val()+"'>"+$("#comentTextarea").val()+"</a></div><div class='cui-comment-text'><p>"+$("#comentTextarea").val()+"</p></div><div class='cui-comment-actions'><span class='cui-comment-time'><i class='far fa-clock'></i>"+moment(Date($.now())).format('YYYY-MM-DD HH:mm:ss')+"</span>	</div></div></div>	</li>"
+																							)			
+																														
 																						} else {
 																							alert("Anda telah membuat comment");
 																						};
@@ -3268,6 +3269,7 @@ if (isset($_GET['to'])) {
 	</script>
 	<script src='../wp-content/plugins/weddingpress/assets/js/wdp.min9b4a.js?ver=3.0.11' id='weddingpress-wdp-js'></script>
 	<script src='../wp-content/plugins/weddingpress/assets/js/guest-form9b4a.js?ver=3.0.11' id='kirim-kit-js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </body>
 
 <!-- Mirrored from inv.wekita.id/tema-05/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Oct 2023 09:35:41 GMT -->
