@@ -2520,8 +2520,8 @@ if (isset($_GET['to'])) {
 																					},
 																					success: function(data) {
 																						if (data === "Comment added successfully.") {
-																							$("#cui-container-comment").append(
-																								"<li class='comment even thread-even depth-1 cui-item-comment' data-likes='0'><div id='cui-comment-58394' class='cui-comment cui-clearfix'><div class='cui-comment-avatar'><img src=''></div><div class='cui-comment-content'><div class='cui-comment-info'><a class='cui-commenter-name' title='"+$("#comentNama").val()+"'>"+$("#comentTextarea").val()+"</a></div><div class='cui-comment-text'><p>"+$("#comentTextarea").val()+"</p></div><div class='cui-comment-actions'><span class='cui-comment-time'><i class='far fa-clock'></i>"+moment(Date($.now())).format('YYYY-MM-DD HH:mm:ss')+"</span>	</div></div></div>	</li>"
+																							$("#cui-container-comment").prepend(
+																								"<li class='comment even thread-even depth-1 cui-item-comment' data-likes='0'><div id='cui-comment-58394' class='cui-comment cui-clearfix'><div class='cui-comment-avatar'><img src=''></div><div class='cui-comment-content'><div class='cui-comment-info'><a class='cui-commenter-name' title='"+$("#comentNama").val()+"'>"+$("#comentTextarea").val()+"</a></div><div class='cui-comment-text'><p>"+$("#comentTextarea").val()+"</p></div><div class='cui-comment-actions'><span class='cui-comment-time'><i class='far fa-clock'></i> "+moment(Date($.now())).format('YYYY-MM-DD HH:mm:ss')+"</span>	</div></div></div>	</li>"
 																							)			
 																														
 																						} else {
