@@ -2388,8 +2388,7 @@ if (isset($_GET['to'])) {
 														<div class="elementor-element elementor-element-a7816a5 wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="a7816a5" data-element_type="widget" data-widget_type="heading.default">
 															<div class="elementor-widget-container">
 																<p class="elementor-heading-title elementor-size-default">
-																	*NB: Diharapkan tidak mencantumkan emoticon saat
-																	mengisi ucapan.</p>
+																	*NB: Diharapkan tidak spam</p>
 															</div>
 														</div>
 														<div class="elementor-element elementor-element-486eba6e wdp-sticky-section-no elementor-widget elementor-widget-weddingpress-kit2" data-id="486eba6e" data-element_type="widget" data-widget_type="weddingpress-kit2.default">
