@@ -1,3 +1,21 @@
+<?php
+
+include_once("./config-database.php");
+
+$coments_data = mysqli_query($mysqli, "SELECT * FROM coments ORDER BY id DESC");
+
+// var_dump($coments);
+// die();
+
+if (isset($_GET['to'])) {
+	$data = str_replace('+', ' ', $_GET['to']);
+} else {
+	$data = "Data Kosong";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -16,14 +34,12 @@
 
 	<!-- This site is optimized with the Yoast SEO plugin v20.13 - https://yoast.com/wordpress/plugins/seo/ -->
 	<title>Undangan Website Tema 05</title>
-	<meta name="description"
-		content="Titik Jamal Intimate Wedding - Official Website" />
+	<meta name="description" content="Titik Jamal Intimate Wedding - Official Website" />
 	<meta property="og:locale" content="id_ID" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="TITIK & JAMAL" />
-	<meta property="og:description"
-		content="Titik Jamal Intimate Wedding - Official Website" />
-	<meta property="og:url" content="https://inv.wekita.id/tema-05/" />
+	<meta property="og:description" content="Titik Jamal Intimate Wedding - Official Website" />
+	<meta property="og:url" content="https://undangan.arsya.tech" />
 	<meta property="og:site_name" content="Wekita.id" />
 	<meta property="article:modified_time" content="2023-05-30T17:25:12+00:00" />
 	<meta property="og:image" content="https://undangan.arsya.tech/Assets/images/Gallery-1.jpeg" />
@@ -33,21 +49,173 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:label1" content="Estimasi waktu membaca" />
 	<meta name="twitter:data1" content="7 menit" />
-	<script type="application/ld+json"
-		class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://inv.wekita.id/tema-05/","url":"https://inv.wekita.id/tema-05/","name":"Undangan Website Tema 05","isPartOf":{"@id":"https://inv.wekita.id/#website"},"primaryImageOfPage":{"@id":"https://inv.wekita.id/tema-05/#primaryimage"},"image":{"@id":"https://inv.wekita.id/tema-05/#primaryimage"},"thumbnailUrl":"https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp","datePublished":"2023-05-26T12:43:17+00:00","dateModified":"2023-05-30T17:25:12+00:00","description":"Buat undangan website untuk pernikahanmu secara mudah, murah dan cepat. Jadikan acara kamu jadi lebih berkesan ! Undangan Website Tema 05","breadcrumb":{"@id":"https://inv.wekita.id/tema-05/#breadcrumb"},"inLanguage":"id","potentialAction":[{"@type":"ReadAction","target":["https://inv.wekita.id/tema-05/"]}]},{"@type":"ImageObject","inLanguage":"id","@id":"https://inv.wekita.id/tema-05/#primaryimage","url":"https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp","contentUrl":"https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp","width":800,"height":800},{"@type":"BreadcrumbList","@id":"https://inv.wekita.id/tema-05/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Beranda","item":"https://inv.wekita.id/"},{"@type":"ListItem","position":2,"name":"Undangan Website Tema 05"}]},{"@type":"WebSite","@id":"https://inv.wekita.id/#website","url":"https://inv.wekita.id/","name":"Wekita.id","description":"Sebar Undangan sambil Rebahan","inLanguage":"id"}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">
+		{
+			"@context": "https://schema.org",
+			"@graph": [{
+				"@type": "WebPage",
+				"@id": "https://inv.wekita.id/tema-05/",
+				"url": "https://inv.wekita.id/tema-05/",
+				"name": "Undangan Website Tema 05",
+				"isPartOf": {
+					"@id": "https://inv.wekita.id/#website"
+				},
+				"primaryImageOfPage": {
+					"@id": "https://inv.wekita.id/tema-05/#primaryimage"
+				},
+				"image": {
+					"@id": "https://inv.wekita.id/tema-05/#primaryimage"
+				},
+				"thumbnailUrl": "https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp",
+				"datePublished": "2023-05-26T12:43:17+00:00",
+				"dateModified": "2023-05-30T17:25:12+00:00",
+				"description": "Buat undangan website untuk pernikahanmu secara mudah, murah dan cepat. Jadikan acara kamu jadi lebih berkesan ! Undangan Website Tema 05",
+				"breadcrumb": {
+					"@id": "https://inv.wekita.id/tema-05/#breadcrumb"
+				},
+				"inLanguage": "id",
+				"potentialAction": [{
+					"@type": "ReadAction",
+					"target": ["https://inv.wekita.id/tema-05/"]
+				}]
+			}, {
+				"@type": "ImageObject",
+				"inLanguage": "id",
+				"@id": "https://inv.wekita.id/tema-05/#primaryimage",
+				"url": "https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp",
+				"contentUrl": "https://inv.wekita.id/wp-content/uploads/2023/05/Slide5.webp",
+				"width": 800,
+				"height": 800
+			}, {
+				"@type": "BreadcrumbList",
+				"@id": "https://inv.wekita.id/tema-05/#breadcrumb",
+				"itemListElement": [{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Beranda",
+					"item": "https://inv.wekita.id/"
+				}, {
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Undangan Website Tema 05"
+				}]
+			}, {
+				"@type": "WebSite",
+				"@id": "https://inv.wekita.id/#website",
+				"url": "https://inv.wekita.id/",
+				"name": "Wekita.id",
+				"description": "Sebar Undangan sambil Rebahan",
+				"inLanguage": "id"
+			}]
+		}
+	</script>
 	<!-- / Yoast SEO plugin. -->
 
-
-	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Feed"
-		href="https://inv.wekita.id/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Umpan Komentar"
-		href="https://inv.wekita.id/comments/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Undangan Website Tema 05 Umpan Komentar"
-		href="feed/index.html" />
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Feed" href="https://inv.wekita.id/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Umpan Komentar" href="https://inv.wekita.id/comments/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="Wekita.id &raquo; Undangan Website Tema 05 Umpan Komentar" href="feed/index.html" />
 	<script>
-		window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/inv.wekita.id\/wp-includes\/js\/wp-emoji-release.min.js?ver=c6d4f54ff5f7e221a70cdd46daa396b3" } };
+		window._wpemojiSettings = {
+			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/",
+			"ext": ".png",
+			"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/",
+			"svgExt": ".svg",
+			"source": {
+				"concatemoji": "https:\/\/inv.wekita.id\/wp-includes\/js\/wp-emoji-release.min.js?ver=c6d4f54ff5f7e221a70cdd46daa396b3"
+			}
+		};
 		/*! This file is auto-generated */
-		!function (i, n) { var o, s, e; function c(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function p(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data), r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)); return t.every(function (e, t) { return e === r[t] }) } function u(e, t, n) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !n(e, "\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff") }return !1 } function f(e, t, n) { var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"), a = r.getContext("2d", { willReadFrequently: !0 }), o = (a.textBaseline = "top", a.font = "600 32px Arial", {}); return e.forEach(function (e) { o[e] = t(a, e, n) }), o } function t(e) { var t = i.createElement("script"); t.src = e, t.defer = !0, i.head.appendChild(t) } "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = { everything: !0, everythingExceptFlag: !0 }, e = new Promise(function (e) { i.addEventListener("DOMContentLoaded", e, { once: !0 }) }), new Promise(function (t) { var n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));", r = new Blob([e], { type: "text/javascript" }), a = new Worker(URL.createObjectURL(r), { name: "wpTestEmojiSupports" }); return void (a.onmessage = function (e) { c(n = e.data), a.terminate(), t(n) }) } catch (e) { } c(n = f(s, u, p)) } t(n) }).then(function (e) { for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () { n.DOMReady = !0 } }).then(function () { return e }).then(function () { var e; n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji))) })) }((window, document), window._wpemojiSettings);
+		! function(i, n) {
+			var o, s, e;
+
+			function c(e) {
+				try {
+					var t = {
+						supportTests: e,
+						timestamp: (new Date).valueOf()
+					};
+					sessionStorage.setItem(o, JSON.stringify(t))
+				} catch (e) {}
+			}
+
+			function p(e, t, n) {
+				e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0);
+				var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data),
+					r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
+				return t.every(function(e, t) {
+					return e === r[t]
+				})
+			}
+
+			function u(e, t, n) {
+				switch (t) {
+					case "flag":
+						return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");
+					case "emoji":
+						return !n(e, "\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")
+				}
+				return !1
+			}
+
+			function f(e, t, n) {
+				var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"),
+					a = r.getContext("2d", {
+						willReadFrequently: !0
+					}),
+					o = (a.textBaseline = "top", a.font = "600 32px Arial", {});
+				return e.forEach(function(e) {
+					o[e] = t(a, e, n)
+				}), o
+			}
+
+			function t(e) {
+				var t = i.createElement("script");
+				t.src = e, t.defer = !0, i.head.appendChild(t)
+			}
+			"undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = {
+				everything: !0,
+				everythingExceptFlag: !0
+			}, e = new Promise(function(e) {
+				i.addEventListener("DOMContentLoaded", e, {
+					once: !0
+				})
+			}), new Promise(function(t) {
+				var n = function() {
+					try {
+						var e = JSON.parse(sessionStorage.getItem(o));
+						if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests
+					} catch (e) {}
+					return null
+				}();
+				if (!n) {
+					if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try {
+						var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));",
+							r = new Blob([e], {
+								type: "text/javascript"
+							}),
+							a = new Worker(URL.createObjectURL(r), {
+								name: "wpTestEmojiSupports"
+							});
+						return void(a.onmessage = function(e) {
+							c(n = e.data), a.terminate(), t(n)
+						})
+					} catch (e) {}
+					c(n = f(s, u, p))
+				}
+				t(n)
+			}).then(function(e) {
+				for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]);
+				n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function() {
+					n.DOMReady = !0
+				}
+			}).then(function() {
+				return e
+			}).then(function() {
+				var e;
+				n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)))
+			}))
+		}((window, document), window._wpemojiSettings);
 	</script>
 	<style>
 		img.wp-smiley,
@@ -63,9 +231,7 @@
 			padding: 0 !important;
 		}
 	</style>
-	<link rel='stylesheet' id='wp-block-library-css'
-		href='../wp-includes/css/dist/block-library/style.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3'
-		media='all' />
+	<link rel='stylesheet' id='wp-block-library-css' href='../wp-includes/css/dist/block-library/style.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3' media='all' />
 	<style id='classic-theme-styles-inline-css'>
 		/*! This file is auto-generated */
 		.wp-block-button__link {
@@ -126,7 +292,7 @@
 			--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
 			--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
 			--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
-			
+
 		}
 
 		:where(.is-layout-flex) {
@@ -451,22 +617,12 @@
 			line-height: 1.6;
 		}
 	</style>
-	<link rel='stylesheet' id='uaf_client_css-css' href='../wp-content/uploads/useanyfont/uaf5eeb.css?ver=1692844999'
-		media='all' />
-	<link rel='stylesheet' id='wdp-centered-css-css'
-		href='../wp-content/plugins/weddingpress/assets/css/wdp-centered-timeline.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3'
-		media='all' />
-	<link rel='stylesheet' id='wdp-horizontal-css-css'
-		href='../wp-content/plugins/weddingpress/assets/css/wdp-horizontal-styles.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3'
-		media='all' />
-	<link rel='stylesheet' id='wdp-fontello-css-css'
-		href='../wp-content/plugins/weddingpress/assets/css/wdp-fontello85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3'
-		media='all' />
-	<link rel='stylesheet' id='exad-main-style-css'
-		href='../wp-content/plugins/weddingpress/assets/css/exad-styles.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3'
-		media='all' />
-	<link rel='stylesheet' id='cui_style-css'
-		href='../wp-content/plugins/weddingpress/addons/comment-kit2/css/cui_style8a54.css?ver=1.0.0' media='screen' />
+	<link rel='stylesheet' id='uaf_client_css-css' href='../wp-content/uploads/useanyfont/uaf5eeb.css?ver=1692844999' media='all' />
+	<link rel='stylesheet' id='wdp-centered-css-css' href='../wp-content/plugins/weddingpress/assets/css/wdp-centered-timeline.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3' media='all' />
+	<link rel='stylesheet' id='wdp-horizontal-css-css' href='../wp-content/plugins/weddingpress/assets/css/wdp-horizontal-styles.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3' media='all' />
+	<link rel='stylesheet' id='wdp-fontello-css-css' href='../wp-content/plugins/weddingpress/assets/css/wdp-fontello85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3' media='all' />
+	<link rel='stylesheet' id='exad-main-style-css' href='../wp-content/plugins/weddingpress/assets/css/exad-styles.min85ff.css?ver=c6d4f54ff5f7e221a70cdd46daa396b3' media='all' />
+	<link rel='stylesheet' id='cui_style-css' href='../wp-content/plugins/weddingpress/addons/comment-kit2/css/cui_style8a54.css?ver=1.0.0' media='screen' />
 	<style id='cui_style-inline-css'>
 		.cui-wrapper {
 			font-size: 14px
@@ -508,85 +664,49 @@
 			background-color: #d7a916;
 		}
 	</style>
-	<link rel='stylesheet' id='hello-elementor-css'
-		href='../wp-content/themes/hello-elementor/style.min653d.css?ver=2.7.1' media='all' />
-	<link rel='stylesheet' id='hello-elementor-theme-style-css'
-		href='../wp-content/themes/hello-elementor/theme.min653d.css?ver=2.7.1' media='all' />
-	<link rel='stylesheet' id='elementor-frontend-css'
-		href='../wp-content/plugins/elementor/assets/css/frontend-lite.min6319.css?ver=3.15.2' media='all' />
-	<link rel='stylesheet' id='elementor-post-7-css'
-		href='../wp-content/uploads/elementor/css/post-734e3.css?ver=1691694414' media='all' />
-	<link rel='stylesheet' id='elementor-icons-css'
-		href='../wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.mind618.css?ver=5.21.0'
-		media='all' />
-	<link rel='stylesheet' id='swiper-css'
-		href='../wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min94a4.css?ver=8.4.5' media='all' />
-	<link rel='stylesheet' id='elementor-pro-css'
-		href='../wp-content/plugins/elementor-pro/assets/css/frontend-lite.min5829.css?ver=3.15.1' media='all' />
-	<link rel='stylesheet' id='weddingpress-wdp-css'
-		href='../wp-content/plugins/weddingpress/assets/css/wdp9b4a.css?ver=3.0.11' media='all' />
-	<link rel='stylesheet' id='kirim-kit-css'
-		href='../wp-content/plugins/weddingpress/assets/css/guest-book9b4a.css?ver=3.0.11' media='all' />
-	<link rel='stylesheet' id='elementor-global-css'
-		href='../wp-content/uploads/elementor/css/global34e3.css?ver=1691694414' media='all' />
-	<link rel='stylesheet' id='elementor-post-716-css'
-		href='../wp-content/uploads/elementor/css/post-71676ee.css?ver=1691696298' media='all' />
-	<link rel='stylesheet' id='google-fonts-1-css'
-		href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CItaliana%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPlayball%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CComic+Neue%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CGreat+Vibes%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CAllura%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CWork+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CBilbo%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CJura%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.3.1'
-		media='all' />
-	<link rel='stylesheet' id='elementor-icons-shared-0-css'
-		href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min52d5.css?ver=5.15.3'
-		media='all' />
-	<link rel='stylesheet' id='elementor-icons-fa-regular-css'
-		href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min52d5.css?ver=5.15.3' media='all' />
-	<link rel='stylesheet' id='elementor-icons-fa-brands-css'
-		href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min52d5.css?ver=5.15.3' media='all' />
-	<link rel='stylesheet' id='elementor-icons-fa-solid-css'
-		href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min52d5.css?ver=5.15.3' media='all' />
+	<link rel='stylesheet' id='hello-elementor-css' href='../wp-content/themes/hello-elementor/style.min653d.css?ver=2.7.1' media='all' />
+	<link rel='stylesheet' id='hello-elementor-theme-style-css' href='../wp-content/themes/hello-elementor/theme.min653d.css?ver=2.7.1' media='all' />
+	<link rel='stylesheet' id='elementor-frontend-css' href='../wp-content/plugins/elementor/assets/css/frontend-lite.min6319.css?ver=3.15.2' media='all' />
+	<link rel='stylesheet' id='elementor-post-7-css' href='../wp-content/uploads/elementor/css/post-734e3.css?ver=1691694414' media='all' />
+	<link rel='stylesheet' id='elementor-icons-css' href='../wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.mind618.css?ver=5.21.0' media='all' />
+	<link rel='stylesheet' id='swiper-css' href='../wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min94a4.css?ver=8.4.5' media='all' />
+	<link rel='stylesheet' id='elementor-pro-css' href='../wp-content/plugins/elementor-pro/assets/css/frontend-lite.min5829.css?ver=3.15.1' media='all' />
+	<link rel='stylesheet' id='weddingpress-wdp-css' href='../wp-content/plugins/weddingpress/assets/css/wdp9b4a.css?ver=3.0.11' media='all' />
+	<link rel='stylesheet' id='kirim-kit-css' href='../wp-content/plugins/weddingpress/assets/css/guest-book9b4a.css?ver=3.0.11' media='all' />
+	<link rel='stylesheet' id='elementor-global-css' href='../wp-content/uploads/elementor/css/global34e3.css?ver=1691694414' media='all' />
+	<link rel='stylesheet' id='elementor-post-716-css' href='../wp-content/uploads/elementor/css/post-71676ee.css?ver=1691696298' media='all' />
+	<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CItaliana%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPlayball%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CComic+Neue%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CGreat+Vibes%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CAllura%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CWork+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CBilbo%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CJura%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.3.1' media='all' />
+	<link rel='stylesheet' id='elementor-icons-shared-0-css' href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min52d5.css?ver=5.15.3' media='all' />
+	<link rel='stylesheet' id='elementor-icons-fa-regular-css' href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min52d5.css?ver=5.15.3' media='all' />
+	<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min52d5.css?ver=5.15.3' media='all' />
+	<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='../wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min52d5.css?ver=5.15.3' media='all' />
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 	<script src='../wp-includes/js/jquery/jquery.min3088.js?ver=3.7.0' id='jquery-core-js'></script>
 	<script src='../wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1' id='jquery-migrate-js'></script>
 	<link rel="https://api.w.org/" href="https://inv.wekita.id/wp-json/" />
 	<link rel="alternate" type="application/json" href="https://inv.wekita.id/wp-json/wp/v2/pages/716" />
-	<link rel="alternate" type="application/json+oembed"
-		href="https://inv.wekita.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finv.wekita.id%2Ftema-05%2F" />
-	<link rel="alternate" type="text/xml+oembed"
-		href="https://inv.wekita.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finv.wekita.id%2Ftema-05%2F&amp;format=xml" />
+	<link rel="alternate" type="application/json+oembed" href="https://inv.wekita.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finv.wekita.id%2Ftema-05%2F" />
+	<link rel="alternate" type="text/xml+oembed" href="https://inv.wekita.id/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finv.wekita.id%2Ftema-05%2F&amp;format=xml" />
 	<meta name="format-detection" content="telephone=no">
-	<meta name="generator"
-		content="Elementor 3.15.2; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+	<meta name="generator" content="Elementor 3.15.2; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
 	<link rel="icon" href="../wp-content/uploads/2023/05/cropped-loglog-32x32.png" sizes="32x32" />
 	<link rel="icon" href="../wp-content/uploads/2023/05/cropped-loglog-192x192.png" sizes="192x192" />
 	<link rel="apple-touch-icon" href="../wp-content/uploads/2023/05/cropped-loglog-180x180.png" />
-	<meta name="msapplication-TileImage"
-		content="https://inv.wekita.id/wp-content/uploads/2023/05/cropped-loglog-270x270.png" />
+	<meta name="msapplication-TileImage" content="https://inv.wekita.id/wp-content/uploads/2023/05/cropped-loglog-270x270.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 </head>
 
-<body data-rsssl=1
-	class="page-template page-template-elementor_canvas page page-id-716 elementor-default elementor-template-canvas elementor-kit-7 elementor-page elementor-page-716"
-	style="background-color: #E8D3C3;">
-	<div data-elementor-type="wp-page" data-elementor-id="716" class="elementor elementor-716"
-		data-elementor-post-type="page">
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-1e0dfa25 closeclick elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="1e0dfa25" data-element_type="section">
+<body data-rsssl=1 class="page-template page-template-elementor_canvas page page-id-716 elementor-default elementor-template-canvas elementor-kit-7 elementor-page elementor-page-716" style="background-color: #E8D3C3;">
+	<div data-elementor-type="wp-page" data-elementor-id="716" class="elementor elementor-716" data-elementor-post-type="page">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-1e0dfa25 closeclick elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="1e0dfa25" data-element_type="section">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4e2ce3ba wdp-sticky-section-no"
-					data-id="4e2ce3ba" data-element_type="column">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4e2ce3ba wdp-sticky-section-no" data-id="4e2ce3ba" data-element_type="column">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-339f28e5 elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default wdp-sticky-section-no"
-							data-id="339f28e5" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-339f28e5 elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default wdp-sticky-section-no" data-id="339f28e5" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1cdb9413 wdp-sticky-section-no"
-									data-id="1cdb9413" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1cdb9413 wdp-sticky-section-no" data-id="1cdb9413" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-5649cbc1 elementor-absolute wdp-sticky-section-no elementor-widget elementor-widget-image"
-											data-id="5649cbc1" data-element_type="widget"
-											data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
-											data-widget_type="image.default">
+										<div class="elementor-element elementor-element-5649cbc1 elementor-absolute wdp-sticky-section-no elementor-widget elementor-widget-image" data-id="5649cbc1" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
 											<div class="elementor-widget-container">
 												<style>
 													/*! elementor - v3.15.0 - 09-08-2023 */
@@ -606,24 +726,14 @@
 														vertical-align: middle;
 														display: inline-block
 													}
-												</style> <img decoding="async" fetchpriority="high" width="800"
-													height="322"
-													src="https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-1024x412.webp"
-													class="attachment-large size-large wp-image-228" alt=""
-													srcset="https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-1024x412.webp 1024w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-300x121.webp 300w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-768x309.webp 768w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1.webp 1326w"
-													sizes="(max-width: 800px) 100vw, 800px" />
+												</style> <img decoding="async" fetchpriority="high" width="800" height="322" src="https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-1024x412.webp" class="attachment-large size-large wp-image-228" alt="" srcset="https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-1024x412.webp 1024w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-300x121.webp 300w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1-768x309.webp 768w, https://inv.wekita.id/wp-content/uploads/2023/05/Mini-BUNGA-TEMA-05-COVER2-1.webp 1326w" sizes="(max-width: 800px) 100vw, 800px" />
 											</div>
 										</div>
-										<section
-											class="elementor-section elementor-inner-section elementor-element elementor-element-3a5705fe elementor-section-height-min-height elementor-section-boxed elementor-section-height-default wdp-sticky-section-no"
-											data-id="3a5705fe" data-element_type="section">
+										<section class="elementor-section elementor-inner-section elementor-element elementor-element-3a5705fe elementor-section-height-min-height elementor-section-boxed elementor-section-height-default wdp-sticky-section-no" data-id="3a5705fe" data-element_type="section">
 											<div class="elementor-container elementor-column-gap-default">
-												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2d82244b wdp-sticky-section-no"
-													data-id="2d82244b" data-element_type="column">
+												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2d82244b wdp-sticky-section-no" data-id="2d82244b" data-element_type="column">
 													<div class="elementor-widget-wrap elementor-element-populated">
-														<div class="elementor-element elementor-element-57ee58b wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-															data-id="57ee58b" data-element_type="widget"
-															data-widget_type="spacer.default">
+														<div class="elementor-element elementor-element-57ee58b wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="57ee58b" data-element_type="widget" data-widget_type="spacer.default">
 															<div class="elementor-widget-container">
 																<style>
 																	/*! elementor - v3.15.0 - 09-08-2023 */
@@ -659,9 +769,7 @@
 																</div>
 															</div>
 														</div>
-														<div class="elementor-element elementor-element-62206629 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-															data-id="62206629" data-element_type="widget"
-															data-widget_type="text-editor.default">
+														<div class="elementor-element elementor-element-62206629 wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="62206629" data-element_type="widget" data-widget_type="text-editor.default">
 															<div class="elementor-widget-container">
 																<style>
 																	/*! elementor - v3.15.0 - 09-08-2023 */
@@ -699,9 +807,7 @@
 																<p>THE WEDDING OF</p>
 															</div>
 														</div>
-														<div class="elementor-element elementor-element-381f0b30 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-															data-id="381f0b30" data-element_type="widget"
-															data-widget_type="text-editor.default">
+														<div class="elementor-element elementor-element-381f0b30 wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="381f0b30" data-element_type="widget" data-widget_type="text-editor.default">
 															<div class="elementor-widget-container">
 																<p>Titik &amp; Jamal</p>
 															</div>
@@ -710,38 +816,25 @@
 												</div>
 											</div>
 										</section>
-										<section
-											class="elementor-section elementor-inner-section elementor-element elementor-element-4aeaa2b5 elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default wdp-sticky-section-no"
-											data-id="4aeaa2b5" data-element_type="section">
+										<section class="elementor-section elementor-inner-section elementor-element elementor-element-4aeaa2b5 elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default wdp-sticky-section-no" data-id="4aeaa2b5" data-element_type="section">
 											<div class="elementor-container elementor-column-gap-default">
-												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-707908c9 wdp-sticky-section-no"
-													data-id="707908c9" data-element_type="column"
-													data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-707908c9 wdp-sticky-section-no" data-id="707908c9" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 													<div class="elementor-widget-wrap elementor-element-populated">
-														<div class="elementor-element elementor-element-4c7c33a9 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-															data-id="4c7c33a9" data-element_type="widget"
-															data-widget_type="text-editor.default">
+														<div class="elementor-element elementor-element-4c7c33a9 wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="4c7c33a9" data-element_type="widget" data-widget_type="text-editor.default">
 															<div class="elementor-widget-container">
 																Kepada Bapak/Ibu/Saudara/i </div>
 														</div>
-														<div class="elementor-element elementor-element-b5d5d10 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-															data-id="b5d5d10" data-element_type="widget"
-															data-widget_type="text-editor.default">
+														<div class="elementor-element elementor-element-b5d5d10 wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="b5d5d10" data-element_type="widget" data-widget_type="text-editor.default">
 															<div class="elementor-widget-container">
-																Nama Tamu </div>
+																<?= $data ?> </div>
 														</div>
-														<div class="elementor-element elementor-element-7b7396af elementor-align-center clicktoclose wdp-sticky-section-no elementor-widget elementor-widget-button"
-															data-id="7b7396af" data-element_type="widget"
-															id="tombol-buka" data-widget_type="button.default">
+														<div class="elementor-element elementor-element-7b7396af elementor-align-center clicktoclose wdp-sticky-section-no elementor-widget elementor-widget-button" data-id="7b7396af" data-element_type="widget" id="tombol-buka" data-widget_type="button.default">
 															<div class="elementor-widget-container">
 																<div class="elementor-button-wrapper">
-																	<a class="elementor-button elementor-size-sm"
-																		role="button">
+																	<a class="elementor-button elementor-size-sm" role="button">
 																		<span class="elementor-button-content-wrapper">
-																			<span
-																				class="elementor-button-icon elementor-align-icon-left">
-																				<i aria-hidden="true"
-																					class="far fa-envelope-open"></i>
+																			<span class="elementor-button-icon elementor-align-icon-left">
+																				<i aria-hidden="true" class="far fa-envelope-open"></i>
 																			</span>
 																			<span class="elementor-button-text">Buka
 																				Undangan</span>
@@ -750,14 +843,12 @@
 																</div>
 															</div>
 														</div>
-														<div class="elementor-element elementor-element-30714b3e wdp-sticky-section-no elementor-widget elementor-widget-html"
-															data-id="30714b3e" data-element_type="widget" id="hide"
-															data-widget_type="html.default">
+														<div class="elementor-element elementor-element-30714b3e wdp-sticky-section-no elementor-widget elementor-widget-html" data-id="30714b3e" data-element_type="widget" id="hide" data-widget_type="html.default">
 															<div class="elementor-widget-container">
 																<script>
-																	document.addEventListener('DOMContentLoaded', function () {
-																		jQuery(function ($) {
-																			$('.clicktoclose').click(function () {
+																	document.addEventListener('DOMContentLoaded', function() {
+																		jQuery(function($) {
+																			$('.clicktoclose').click(function() {
 																				$(this).parents('.closeclick').slideUp(500);
 																			});
 																		});
@@ -770,17 +861,46 @@
 																	}
 																</style>
 
-																<script>var x = document.getElementById("song");
-																	window.onbeforeunload = function () { window.scrollTo(0, 0) }; disableScrolling();
-																	document.body.style.overflowY = "hidden"; document.body.style.heigth = "100vh"; document.getElementById("tombol-buka")
-																		.onclick = function () { myFunction() }; function myFunction() {
-																			document.body.style.overflowY = "unset";
-																			document.getElementById("tombol-buka").style.visibility = "hidden"; enableScrolling();
-																			playAudio()
-																		} function disableScrolling() {
-																			var x = window.scrollX; var y = window.scrollY;
-																			window.onscroll = function () { window.scrollTo(x, y) }
-																		} function enableScrolling() { window.onscroll = function () { } } function playAudio() { x.play() } function pauseAudio() { x.pause() }</script>
+																<script>
+																	var x = document.getElementById("song");
+																	window.onbeforeunload = function() {
+																		window.scrollTo(0, 0)
+																	};
+																	disableScrolling();
+																	document.body.style.overflowY = "hidden";
+																	document.body.style.heigth = "100vh";
+																	document.getElementById("tombol-buka")
+																		.onclick = function() {
+																			myFunction()
+																		};
+
+																	function myFunction() {
+																		document.body.style.overflowY = "unset";
+																		document.getElementById("tombol-buka").style.visibility = "hidden";
+																		enableScrolling();
+																		playAudio()
+																	}
+
+																	function disableScrolling() {
+																		var x = window.scrollX;
+																		var y = window.scrollY;
+																		window.onscroll = function() {
+																			window.scrollTo(x, y)
+																		}
+																	}
+
+																	function enableScrolling() {
+																		window.onscroll = function() {}
+																	}
+
+																	function playAudio() {
+																		x.play()
+																	}
+
+																	function pauseAudio() {
+																		x.pause()
+																	}
+																</script>
 															</div>
 														</div>
 													</div>
@@ -795,25 +915,16 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-2be4a376 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="2be4a376" data-element_type="section" id="home">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-2be4a376 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="2be4a376" data-element_type="section" id="home">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-59efdecd wdp-sticky-section-no"
-					data-id="59efdecd" data-element_type="column">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-59efdecd wdp-sticky-section-no" data-id="59efdecd" data-element_type="column">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-18234500 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default wdp-sticky-section-no"
-							data-id="18234500" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-18234500 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default wdp-sticky-section-no" data-id="18234500" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3b697f58 wdp-sticky-section-no"
-									data-id="3b697f58" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3b697f58 wdp-sticky-section-no" data-id="3b697f58" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
 										<div class="elementor-background-overlay"></div>
-										<div class="elementor-element elementor-element-11e911b2 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="11e911b2" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-11e911b2 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="11e911b2" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
@@ -824,19 +935,12 @@
 								</div>
 							</div>
 						</section>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-11770958 elementor-section-height-min-height elementor-section-content-top elementor-section-boxed elementor-section-height-default wdp-sticky-section-no"
-							data-id="11770958" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-11770958 elementor-section-height-min-height elementor-section-content-top elementor-section-boxed elementor-section-height-default wdp-sticky-section-no" data-id="11770958" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2d0b2 wdp-sticky-section-no"
-									data-id="2d0b2" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2d0b2 wdp-sticky-section-no" data-id="2d0b2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
 										<div class="elementor-background-overlay"></div>
-										<div class="elementor-element elementor-element-5f43421c animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-heading"
-											data-id="5f43421c" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-5f43421c animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-heading" data-id="5f43421c" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<style>
 													/*! elementor - v3.15.0 - 09-08-2023 */
@@ -876,52 +980,31 @@
 													Jamal</h2>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-44a9e727 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor"
-											data-id="44a9e727" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-44a9e727 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor" data-id="44a9e727" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>We invite you to intimate wedding party</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-1a6325f6 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-weddingpress-countdown"
-											data-id="1a6325f6" data-element_type="widget"
-											data-settings="{&quot;_animation_mobile&quot;:&quot;pulse&quot;,&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="weddingpress-countdown.default">
+										<div class="elementor-element elementor-element-1a6325f6 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-weddingpress-countdown" data-id="1a6325f6" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;pulse&quot;,&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="weddingpress-countdown.default">
 											<div class="elementor-widget-container">
 
 												<div class="wpkoi-elements-countdown-wrapper">
-													<div
-														class="wpkoi-elements-countdown-container wpkoi-elements-countdown-label-block ">
-														<ul id="wpkoi-elements-countdown-1a6325f6"
-															class="wpkoi-elements-countdown-items"
-															data-date="Oct 30 2023 09:00:00">
+													<div class="wpkoi-elements-countdown-container wpkoi-elements-countdown-label-block ">
+														<ul id="wpkoi-elements-countdown-1a6325f6" class="wpkoi-elements-countdown-items" data-date="Oct 30 2023 09:00:00">
 															<li class="wpkoi-elements-countdown-item">
-																<div class="wpkoi-elements-countdown-days"><span
-																		data-days
-																		class="wpkoi-elements-countdown-digits">00</span><span
-																		class="wpkoi-elements-countdown-label">Hari</span>
+																<div class="wpkoi-elements-countdown-days"><span data-days class="wpkoi-elements-countdown-digits">00</span><span class="wpkoi-elements-countdown-label">Hari</span>
 																</div>
 															</li>
 															<li class="wpkoi-elements-countdown-item">
-																<div class="wpkoi-elements-countdown-hours"><span
-																		data-hours
-																		class="wpkoi-elements-countdown-digits">00</span><span
-																		class="wpkoi-elements-countdown-label">Jam</span>
+																<div class="wpkoi-elements-countdown-hours"><span data-hours class="wpkoi-elements-countdown-digits">00</span><span class="wpkoi-elements-countdown-label">Jam</span>
 																</div>
 															</li>
 															<li class="wpkoi-elements-countdown-item">
-																<div class="wpkoi-elements-countdown-minutes"><span
-																		data-minutes
-																		class="wpkoi-elements-countdown-digits">00</span><span
-																		class="wpkoi-elements-countdown-label">Menit</span>
+																<div class="wpkoi-elements-countdown-minutes"><span data-minutes class="wpkoi-elements-countdown-digits">00</span><span class="wpkoi-elements-countdown-label">Menit</span>
 																</div>
 															</li>
 															<li class="wpkoi-elements-countdown-item">
-																<div class="wpkoi-elements-countdown-seconds"><span
-																		data-seconds
-																		class="wpkoi-elements-countdown-digits">00</span><span
-																		class="wpkoi-elements-countdown-label">Detik</span>
+																<div class="wpkoi-elements-countdown-seconds"><span data-seconds class="wpkoi-elements-countdown-digits">00</span><span class="wpkoi-elements-countdown-label">Detik</span>
 																</div>
 															</li>
 														</ul>
@@ -931,7 +1014,7 @@
 
 
 												<script type="text/javascript">
-													jQuery(document).ready(function ($) {
+													jQuery(document).ready(function($) {
 														'use strict';
 														$("#wpkoi-elements-countdown-1a6325f6").countdown();
 													});
@@ -939,22 +1022,15 @@
 
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-76fd3571 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor"
-											data-id="76fd3571" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-76fd3571 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor" data-id="76fd3571" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>Senin, 30 Oktober 2023</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-67e0699d elementor-align-center elementor-tablet-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button"
-											data-id="67e0699d" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;swing&quot;}"
-											data-widget_type="button.default">
+										<div class="elementor-element elementor-element-67e0699d elementor-align-center elementor-tablet-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button" data-id="67e0699d" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;swing&quot;}" data-widget_type="button.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-button-wrapper">
-													<a class="elementor-button elementor-button-link elementor-size-sm"
-														href="#date">
+													<a class="elementor-button elementor-button-link elementor-size-sm" href="#date">
 														<span class="elementor-button-content-wrapper">
 															<span class="elementor-button-text">Save The Date</span>
 														</span>
@@ -970,68 +1046,43 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-eef1460 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="eef1460" data-element_type="section" id="mempelai">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-eef1460 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="eef1460" data-element_type="section" id="mempelai">
 			<div class="elementor-background-overlay"></div>
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-68b238ad wdp-sticky-section-no"
-					data-id="68b238ad" data-element_type="column">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-68b238ad wdp-sticky-section-no" data-id="68b238ad" data-element_type="column">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-f39e077 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="f39e077" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-f39e077 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="f39e077" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1c70e713 wdp-sticky-section-no"
-									data-id="1c70e713" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1c70e713 wdp-sticky-section-no" data-id="1c70e713" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-4a77ba6e reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="4a77ba6e" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-4a77ba6e reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="4a77ba6e" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<h2 class="elementor-heading-title elementor-size-default">
 													Assalamu'alaikum Wr. Wb.</h2>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-48ac3b68 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="48ac3b68" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-48ac3b68 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="48ac3b68" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>Tanpa mengurangi rasa hormat.</p>
 												<p>Kami mengundang Bapak/Ibu/Saudara/i serta kerabat sekalian untuk
 													menghadiri acara pernikahan kami :</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-d6d9f9 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image"
-											data-id="d6d9f9" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="image.default">
+										<div class="elementor-element elementor-element-d6d9f9 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image" data-id="d6d9f9" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
 											<div class="elementor-widget-container">
-												<img decoding="async" width="768" height="751"
-													src="/Assets/images/Picture1-2-768x751-1-1.png"
-													class="elementor-animation-grow attachment-full size-full wp-image-243"
-													alt=""
-													srcset="/Assets/images/Picture1-2-768x751-1-1.png 768w, /Assets/images/Picture1-2-768x751-1-1.png 300w"
-													sizes="(max-width: 768px) 100vw, 768px" />
+												<img decoding="async" width="768" height="751" src="/Assets/images/Picture1-2-768x751-1-1.png" class="elementor-animation-grow attachment-full size-full wp-image-243" alt="" srcset="/Assets/images/Picture1-2-768x751-1-1.png 768w, /Assets/images/Picture1-2-768x751-1-1.png 300w" sizes="(max-width: 768px) 100vw, 768px" />
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-3b66048b reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="3b66048b" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-3b66048b reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="3b66048b" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<h2 class="elementor-heading-title elementor-size-default">Titik Hidayati​</h2>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-2858f1b4 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="2858f1b4" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-2858f1b4 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="2858f1b4" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												Putri Kedua Bapak Maliki <br>&amp; Ibu Choiriyah </div>
 										</div>
-										<div class="elementor-element elementor-element-5ec2870d e-grid-align-tablet-center e-grid-align-mobile-center reveal elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="5ec2870d" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-5ec2870d e-grid-align-tablet-center e-grid-align-mobile-center reveal elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="5ec2870d" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<style>
 													/*! elementor - v3.15.0 - 09-08-2023 */
@@ -1334,65 +1385,45 @@
 												</style>
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-grow elementor-repeater-item-6154405"
-															target="_blank" href="https://www.instagram.com/titikhidayatii/">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-grow elementor-repeater-item-6154405" target="_blank" href="https://www.instagram.com/titikhidayatii/">
 															<span class="elementor-screen-only">Instagram</span>
 															<i class="fab fa-instagram"></i> </a>
 													</span>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-5b7c5f96 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="5b7c5f96" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-5b7c5f96 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="5b7c5f96" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>&amp;</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-1e15d7cd animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image"
-											data-id="1e15d7cd" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="image.default">
+										<div class="elementor-element elementor-element-1e15d7cd animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image" data-id="1e15d7cd" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
 											<div class="elementor-widget-container">
-												<img decoding="async" width="768" height="751"
-													src="/Assets/images/Picture2-3-768x751-1-1.png"
-													class="elementor-animation-grow attachment-full size-full wp-image-245"
-													alt=""
-													srcset="/Assets/images/Picture2-3-768x751-1-1.png 768w, /Assets/images/Picture2-3-768x751-1-1.png 300w"
-													sizes="(max-width: 768px) 100vw, 768px" />
+												<img decoding="async" width="768" height="751" src="/Assets/images/Picture2-3-768x751-1-1.png" class="elementor-animation-grow attachment-full size-full wp-image-245" alt="" srcset="/Assets/images/Picture2-3-768x751-1-1.png 768w, /Assets/images/Picture2-3-768x751-1-1.png 300w" sizes="(max-width: 768px) 100vw, 768px" />
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-77bf5a8 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="77bf5a8" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-77bf5a8 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="77bf5a8" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<h2 class="elementor-heading-title elementor-size-default">Jamaludin Muhammad Akbar</h2>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-146ceac7 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="146ceac7" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-146ceac7 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="146ceac7" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>Putra Kedua Bapak Sunardi <br />&amp; Ibu Sri Suhartini </p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-32609f33 e-grid-align-tablet-center e-grid-align-mobile-center reveal elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="32609f33" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-32609f33 e-grid-align-tablet-center e-grid-align-mobile-center reveal elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="32609f33" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-grow elementor-repeater-item-6154405"
-															target="_blank" href="https://www.instagram.com/lamajnun/">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-grow elementor-repeater-item-6154405" target="_blank" href="https://www.instagram.com/lamajnun/">
 															<span class="elementor-screen-only">Instagram</span>
 															<i class="fab fa-instagram"></i> </a>
 													</span>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-2cfb98c6 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="2cfb98c6" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-2cfb98c6 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="2cfb98c6" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
@@ -1407,48 +1438,31 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-4192616e elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="4192616e" data-element_type="section" id="galeri">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-4192616e elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="4192616e" data-element_type="section" id="galeri">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-213d7757 wdp-sticky-section-no"
-					data-id="213d7757" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-213d7757 wdp-sticky-section-no" data-id="213d7757" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-background-overlay"></div>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-76882f32 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="76882f32" data-element_type="section"
-							data-settings="{&quot;shape_divider_top&quot;:&quot;opacity-fan&quot;}">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-76882f32 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="76882f32" data-element_type="section" data-settings="{&quot;shape_divider_top&quot;:&quot;opacity-fan&quot;}">
 							<div class="elementor-shape elementor-shape-top" data-negative="false">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 19.6"
-									preserveAspectRatio="none">
-									<path class="elementor-shape-fill" style="opacity:0.33"
-										d="M0 0L0 18.8 141.8 4.1 283.5 18.8 283.5 0z" />
-									<path class="elementor-shape-fill" style="opacity:0.33"
-										d="M0 0L0 12.6 141.8 4 283.5 12.6 283.5 0z" />
-									<path class="elementor-shape-fill" style="opacity:0.33"
-										d="M0 0L0 6.4 141.8 4 283.5 6.4 283.5 0z" />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 19.6" preserveAspectRatio="none">
+									<path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 18.8 141.8 4.1 283.5 18.8 283.5 0z" />
+									<path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 12.6 141.8 4 283.5 12.6 283.5 0z" />
+									<path class="elementor-shape-fill" style="opacity:0.33" d="M0 0L0 6.4 141.8 4 283.5 6.4 283.5 0z" />
 									<path class="elementor-shape-fill" d="M0 0L0 1.2 141.8 4 283.5 1.2 283.5 0z" />
 								</svg>
 							</div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-200853bb wdp-sticky-section-no"
-									data-id="200853bb" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-200853bb wdp-sticky-section-no" data-id="200853bb" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-2dd49980 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="2dd49980" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-2dd49980 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="2dd49980" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-490cb4cc reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="490cb4cc" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-490cb4cc reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="490cb4cc" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<h1 class="elementor-heading-title elementor-size-default">Galeri</h1>
 											</div>
@@ -1457,46 +1471,29 @@
 								</div>
 							</div>
 						</section>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-60b621 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="60b621" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-60b621 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="60b621" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6920ffa5 wdp-sticky-section-no"
-									data-id="6920ffa5" data-element_type="column">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6920ffa5 wdp-sticky-section-no" data-id="6920ffa5" data-element_type="column">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-68e13d78 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-weddingpress-timeline"
-											data-id="68e13d78" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-											data-widget_type="weddingpress-timeline.default">
+										<div class="elementor-element elementor-element-68e13d78 animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-weddingpress-timeline" data-id="68e13d78" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="weddingpress-timeline.default">
 											<div class="elementor-widget-container">
 
 												<div class="twae-vertical twae-wrapper twae-one-sided-wrapper">
-													<div
-														class="twae-timeline-centered twae-timeline-sm twae-line twae-one-sided-timeline">
+													<div class="twae-timeline-centered twae-timeline-sm twae-line twae-one-sided-timeline">
 														<article class="twae-timeline-entry twae-right-aligned">
 															<div class="twae-timeline-entry-inner">
 																<time class="twae-label-extra-label">
-																	<!-- <span class="twae-label">2017</span> -->
+																	<span class="twae-label">2015</span>
 																	<span class="twae-extra-label"></span>
 																</time>
-																<div class="twae-bg-orange twae-icon"><i
-																		aria-hidden="true" class="fas fa-heart"></i>
+																<div class="twae-bg-orange twae-icon"><i aria-hidden="true" class="fas fa-heart"></i>
 																</div>
 																<div class="twae-bg-orange twae-data-container">
 																	<!-- <span class="twae-title">Awal Bertemu</span> -->
-																	<div class="twae-timeline-img"><img loading="lazy"
-																			width="1295" height="864"
-																			src="/Assets/images/Gallery-1.jpeg"
-																			class="attachment-full size-full" alt=""
-																			decoding="async"
-																			srcset="/Assets/images/Gallery-1.jpeg 1295w, /Assets/images/Gallery-1.jpeg 300w, /Assets/images/Gallery-1.jpeg 1024w, /Assets/images/Gallery-1.jpeg 768w"
-																			sizes="(max-width: 1295px) 100vw, 1295px" />
+																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-1.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-1.jpeg 1295w, /Assets/images/Gallery-1.jpeg 300w, /Assets/images/Gallery-1.jpeg 1024w, /Assets/images/Gallery-1.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Lorem ipsum dolor sit amet, consectetur
-																			adipiscing elit. Erat enim res aperta. Ne
-																			discipulum abducam, times. Primum quid tu
-																			dicis breve? An haec ab eo non dicuntur?</p>
+																		<p>Kampus umm adalah awal tempat kami bertemu untuk pertama kali, dan kami adalah teman sekelas waktu itu</p>
 																	</div>
 																</div>
 															</div>
@@ -1504,29 +1501,17 @@
 														<article class="twae-timeline-entry twae-right-aligned">
 															<div class="twae-timeline-entry-inner">
 																<time class="twae-label-extra-label">
-																	<!-- <span class="twae-label">2019</span> -->
+																	<span class="twae-label">2017</span>
 																	<span class="twae-extra-label"></span>
 																</time>
-																<div class="twae-bg-orange twae-icon"><i
-																		aria-hidden="true" class="fas fa-heart"></i>
+																<div class="twae-bg-orange twae-icon"><i aria-hidden="true" class="fas fa-heart"></i>
 																</div>
 																<div class="twae-bg-orange twae-data-container">
 																	<!-- <span class="twae-title">Acara Lamaran</span> -->
-																	<div class="twae-timeline-img"><img loading="lazy"
-																			width="1295" height="864"
-																			src="/Assets/images/Gallery-2.jpeg"
-																			class="attachment-full size-full" alt=""
-																			decoding="async"
-																			srcset="/Assets/images/Gallery-2.jpeg 1295w, /Assets/images/Gallery-2.jpeg 300w, /Assets/images/Gallery-2.jpeg 1024w, /Assets/images/Gallery-2.jpeg 768w"
-																			sizes="(max-width: 1295px) 100vw, 1295px" />
+																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-2.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-2.jpeg 1295w, /Assets/images/Gallery-2.jpeg 300w, /Assets/images/Gallery-2.jpeg 1024w, /Assets/images/Gallery-2.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Aliter homines, aliter philosophos loqui
-																			putas oportere? Sin aliud quid voles,
-																			postea. Mihi enim satis est, ipsis non
-																			satis. Negat enim summo bono afferre
-																			incrementum diem. Quod ea non occurrentia
-																			fingunt, vincunt Aristonem.</p>
+																		<p>Setelah berteman dan memalui beberapa semester , pertemanan kami berlanjut menjadi ketertarikan yang lebih serius , 7 maret 2017 awal mulai hubungan ini.</p>
 																	</div>
 																</div>
 															</div>
@@ -1534,29 +1519,17 @@
 														<article class="twae-timeline-entry twae-right-aligned">
 															<div class="twae-timeline-entry-inner">
 																<time class="twae-label-extra-label">
-																	<!-- <span class="twae-label">2021</span> -->
+																	<span class="twae-label">2023</span>
 																	<span class="twae-extra-label"></span>
 																</time>
-																<div class="twae-bg-orange twae-icon"><i
-																		aria-hidden="true" class="fas fa-heart"></i>
+																<div class="twae-bg-orange twae-icon"><i aria-hidden="true" class="fas fa-heart"></i>
 																</div>
 																<div class="twae-bg-orange twae-data-container">
 																	<!-- <span class="twae-title">Pernikahan</span> -->
-																	<div class="twae-timeline-img"><img loading="lazy"
-																			width="1295" height="864"
-																			src="/Assets/images/Gallery-3.jpeg"
-																			class="attachment-full size-full" alt=""
-																			decoding="async"
-																			srcset="/Assets/images/Gallery-3.jpeg 1295w, /Assets/images/Gallery-3.jpeg 300w, /Assets/images/Gallery-3.jpeg 1024w, /Assets/images/Gallery-3.jpeg 768w"
-																			sizes="(max-width: 1295px) 100vw, 1295px" />
+																	<div class="twae-timeline-img"><img loading="lazy" width="1295" height="864" src="/Assets/images/Gallery-3.jpeg" class="attachment-full size-full" alt="" decoding="async" srcset="/Assets/images/Gallery-3.jpeg 1295w, /Assets/images/Gallery-3.jpeg 300w, /Assets/images/Gallery-3.jpeg 1024w, /Assets/images/Gallery-3.jpeg 768w" sizes="(max-width: 1295px) 100vw, 1295px" />
 																	</div>
 																	<div class="twae-description">
-																		<p>Lorem ipsum dolor sit amet, consectetur
-																			adipiscing elit, sed do eiusmod tempor
-																			incididunt ut labore et dolore magna aliqua.
-																			Ut enim ad minim veniam, quis nostrud
-																			exercitation ullamco laboris nisi ut aliquip
-																			ex ea commodo consequat.</p>
+																		<p>Setelah 6 tahun setengah kita menjalani hubungan yang penuh lika liku dan pernah menjalani LDR di tengah hubungan, dan tgl 17 februari kita melakukan pertemuan keluarga untuk pertama kalinya, dan tgl 30 oktober 2023 kami sepakat untuk membangun bahtera rumah tangga bersama.</p>
 																	</div>
 																</div>
 															</div>
@@ -1565,9 +1538,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-c750394 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="c750394" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-c750394 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="c750394" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
@@ -1582,46 +1553,30 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-3efa583e elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="3efa583e" data-element_type="section">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-3efa583e elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="3efa583e" data-element_type="section">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-794068d9 wdp-sticky-section-no"
-					data-id="794068d9" data-element_type="column">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-794068d9 wdp-sticky-section-no" data-id="794068d9" data-element_type="column">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-254ddc25 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="254ddc25" data-element_type="section"
-							data-settings="{&quot;shape_divider_top&quot;:&quot;mountains&quot;}">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-254ddc25 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="254ddc25" data-element_type="section" data-settings="{&quot;shape_divider_top&quot;:&quot;mountains&quot;}">
 							<div class="elementor-shape elementor-shape-top" data-negative="false">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"
-									preserveAspectRatio="none">
-									<path class="elementor-shape-fill" opacity="0.33"
-										d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
-									<path class="elementor-shape-fill" opacity="0.66"
-										d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
-									<path class="elementor-shape-fill"
-										d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+									<path class="elementor-shape-fill" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
+									<path class="elementor-shape-fill" opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
+									<path class="elementor-shape-fill" d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
 								</svg>
 							</div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-15a9ba wdp-sticky-section-no"
-									data-id="15a9ba" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-15a9ba wdp-sticky-section-no" data-id="15a9ba" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
 										<div class="elementor-background-overlay"></div>
-										<div class="elementor-element elementor-element-4c563d42 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="4c563d42" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-4c563d42 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="4c563d42" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-343d4e1c reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="343d4e1c" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-343d4e1c reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="343d4e1c" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<p class="elementor-heading-title elementor-size-default">"Dan
 													kawinkanlah orang-orang yang sendirian di antara kamu, dan
@@ -1632,9 +1587,7 @@
 												</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-62735ae4 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="62735ae4" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-62735ae4 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="62735ae4" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
@@ -1649,42 +1602,30 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-40634200 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="40634200" data-element_type="section" id="date">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-40634200 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="40634200" data-element_type="section" id="date">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3f1ecdad wdp-sticky-section-no"
-					data-id="3f1ecdad" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3f1ecdad wdp-sticky-section-no" data-id="3f1ecdad" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-background-overlay"></div>
-						<div class="elementor-element elementor-element-39f3a220 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="39f3a220" data-element_type="widget" id="event" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-39f3a220 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="39f3a220" data-element_type="widget" id="event" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
 								</div>
 							</div>
 						</div>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-48c37e6e elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="48c37e6e" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-48c37e6e elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="48c37e6e" data-element_type="section">
 							<div class="elementor-background-overlay"></div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-53a800a4 wdp-sticky-section-no"
-									data-id="53a800a4" data-element_type="column">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-53a800a4 wdp-sticky-section-no" data-id="53a800a4" data-element_type="column">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-214302e0 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="214302e0" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-214302e0 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="214302e0" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<p class="elementor-heading-title elementor-size-default">Live Streaming
 												</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-4496875e reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="4496875e" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-4496875e reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="4496875e" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p>Kami mengundang Bapak/Ibu/Saudara/i <br />untuk menyaksikan
 													Pernikahan kami<br />secara Virtual yang disiarkan langsung
@@ -1692,9 +1633,7 @@
 												</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-26e4e057 reveal elementor-view-default wdp-sticky-section-no elementor-widget elementor-widget-icon"
-											data-id="26e4e057" data-element_type="widget"
-											data-widget_type="icon.default">
+										<div class="elementor-element elementor-element-26e4e057 reveal elementor-view-default wdp-sticky-section-no elementor-widget elementor-widget-icon" data-id="26e4e057" data-element_type="widget" data-widget_type="icon.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-icon-wrapper">
 													<div class="elementor-icon">
@@ -1703,30 +1642,22 @@
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-22e959dc reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="22e959dc" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-22e959dc reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="22e959dc" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">30 Oktober 2023</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-41e3d97b reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="41e3d97b" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-41e3d97b reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="41e3d97b" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Pukul 09.00 WIB</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-9e172e9 elementor-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button"
-											data-id="9e172e9" data-element_type="widget"
-											data-settings="{&quot;_animation&quot;:&quot;swing&quot;}"
-											data-widget_type="button.default">
+										<div class="elementor-element elementor-element-9e172e9 elementor-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button" data-id="9e172e9" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;swing&quot;}" data-widget_type="button.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-button-wrapper">
 													<a class="elementor-button elementor-size-sm" role="button" href="#">
 														<span class="elementor-button-content-wrapper">
-															<span
-																class="elementor-button-icon elementor-align-icon-left">
+															<span class="elementor-button-icon elementor-align-icon-left">
 																<i aria-hidden="true" class="fab fa-instagram"></i>
 															</span>
 															<span class="elementor-button-text">Click Here</span>
@@ -1739,39 +1670,27 @@
 								</div>
 							</div>
 						</section>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-718bebcd elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="718bebcd" data-element_type="section"
-							data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-718bebcd elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="718bebcd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 							<div class="elementor-background-overlay"></div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2db0bdfb wdp-sticky-section-no"
-									data-id="2db0bdfb" data-element_type="column">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2db0bdfb wdp-sticky-section-no" data-id="2db0bdfb" data-element_type="column">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-4a576680 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="4a576680" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-4a576680 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="4a576680" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<p class="elementor-heading-title elementor-size-default">Akad Nikah</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-622ffd38 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="622ffd38" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-622ffd38 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="622ffd38" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Senin, 30 Oktober 2023</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-76089ff6 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="76089ff6" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-76089ff6 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="76089ff6" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Pukul 09.00 WIB</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-1c33bb5e reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="1c33bb5e" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-1c33bb5e reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="1c33bb5e" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Cafe Barka, Gunungsari, Bumiaji, Batu</p>
 											</div>
@@ -1780,39 +1699,27 @@
 								</div>
 							</div>
 						</section>
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-690d9537 elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="690d9537" data-element_type="section"
-							data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-690d9537 elementor-section-full_width elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="690d9537" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 							<div class="elementor-background-overlay"></div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6cf35113 wdp-sticky-section-no"
-									data-id="6cf35113" data-element_type="column">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6cf35113 wdp-sticky-section-no" data-id="6cf35113" data-element_type="column">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-369c8414 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="369c8414" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-369c8414 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="369c8414" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<p class="elementor-heading-title elementor-size-default">Resepsi</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-c5ec661 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="c5ec661" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-c5ec661 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="c5ec661" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Senin, 30 Oktober 2023</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-3f31cbd9 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="3f31cbd9" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-3f31cbd9 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="3f31cbd9" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Pukul 14.00 WIB</p>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-12e24ee3 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-											data-id="12e24ee3" data-element_type="widget"
-											data-widget_type="text-editor.default">
+										<div class="elementor-element elementor-element-12e24ee3 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="12e24ee3" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<p class="italic mb-4">Cafe Barka, Gunungsari, Bumiaji, Batu</p>
 											</div>
@@ -1821,14 +1728,10 @@
 								</div>
 							</div>
 						</section>
-						<div class="elementor-element elementor-element-7b141c98 elementor-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button"
-							data-id="7b141c98" data-element_type="widget"
-							data-settings="{&quot;_animation&quot;:&quot;swing&quot;}"
-							data-widget_type="button.default">
+						<div class="elementor-element elementor-element-7b141c98 elementor-align-center elementor-mobile-align-center wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-button" data-id="7b141c98" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;swing&quot;}" data-widget_type="button.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-button-wrapper">
-									<a class="elementor-button elementor-button-link elementor-size-sm" href="https://maps.app.goo.gl/dPPMvs7oEQ18jvt7A"
-										target="_blank">
+									<a class="elementor-button elementor-button-link elementor-size-sm" href="https://maps.app.goo.gl/dPPMvs7oEQ18jvt7A" target="_blank">
 										<span class="elementor-button-content-wrapper">
 											<span class="elementor-button-icon elementor-align-icon-left">
 												<i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
@@ -1838,8 +1741,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-3df9343b wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="3df9343b" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-3df9343b wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="3df9343b" data-element_type="widget" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
@@ -2015,7 +1917,7 @@
 				</div>
 			</div>
 		</section> -->
-		<section
+		<!-- <section
 			class="elementor-section elementor-top-section elementor-element elementor-element-3b5afad8 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
 			data-id="3b5afad8" data-element_type="section">
 			<div class="elementor-container elementor-column-gap-default">
@@ -2429,127 +2331,82 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-58959f0f elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="58959f0f" data-element_type="section">
+		</section> -->
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-58959f0f elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="58959f0f" data-element_type="section">
 			<div class="elementor-background-overlay"></div>
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1e1164c4 wdp-sticky-section-no"
-					data-id="1e1164c4" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1e1164c4 wdp-sticky-section-no" data-id="1e1164c4" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-4ab9780a elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="4ab9780a" data-element_type="section" id="ucapan"
-							data-settings="{&quot;shape_divider_top&quot;:&quot;mountains&quot;,&quot;shape_divider_bottom&quot;:&quot;mountains&quot;}">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-4ab9780a elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="4ab9780a" data-element_type="section" id="ucapan" data-settings="{&quot;shape_divider_top&quot;:&quot;mountains&quot;,&quot;shape_divider_bottom&quot;:&quot;mountains&quot;}">
 							<div class="elementor-shape elementor-shape-top" data-negative="false">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"
-									preserveAspectRatio="none">
-									<path class="elementor-shape-fill" opacity="0.33"
-										d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
-									<path class="elementor-shape-fill" opacity="0.66"
-										d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
-									<path class="elementor-shape-fill"
-										d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+									<path class="elementor-shape-fill" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
+									<path class="elementor-shape-fill" opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
+									<path class="elementor-shape-fill" d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
 								</svg>
 							</div>
 							<div class="elementor-shape elementor-shape-bottom" data-negative="false">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"
-									preserveAspectRatio="none">
-									<path class="elementor-shape-fill" opacity="0.33"
-										d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
-									<path class="elementor-shape-fill" opacity="0.66"
-										d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
-									<path class="elementor-shape-fill"
-										d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+									<path class="elementor-shape-fill" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" />
+									<path class="elementor-shape-fill" opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" />
+									<path class="elementor-shape-fill" d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" />
 								</svg>
 							</div>
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2fd28feb wdp-sticky-section-no"
-									data-id="2fd28feb" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2fd28feb wdp-sticky-section-no" data-id="2fd28feb" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-7890f8e0 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="7890f8e0" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-7890f8e0 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="7890f8e0" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-3499b5d wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="3499b5d" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-3499b5d wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="3499b5d" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-441c7209 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="441c7209" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-441c7209 reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="441c7209" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h1 class="elementor-heading-title elementor-size-default">Ucapkan
-													Sesuatu</h1>
+												<h1 class="elementor-heading-title elementor-size-default">Ucapkan Sesuatu</h1>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-6ab95ad reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-											data-id="6ab95ad" data-element_type="widget"
-											data-widget_type="heading.default">
+										<div class="elementor-element elementor-element-6ab95ad reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="6ab95ad" data-element_type="widget" data-widget_type="heading.default">
 											<div class="elementor-widget-container">
 												<h1 class="elementor-heading-title elementor-size-default">Berikan
 													Ucapan &amp; Doa Restu</h1>
 											</div>
 										</div>
-										<section
-											class="elementor-section elementor-inner-section elementor-element elementor-element-743af111 elementor-section-full_width reveal elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-											data-id="743af111" data-element_type="section">
+										<section class="elementor-section elementor-inner-section elementor-element elementor-element-743af111 elementor-section-full_width reveal elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="743af111" data-element_type="section">
 											<div class="elementor-container elementor-column-gap-default">
-												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-33b3a65 wdp-sticky-section-no"
-													data-id="33b3a65" data-element_type="column"
-													data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+												<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-33b3a65 wdp-sticky-section-no" data-id="33b3a65" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 													<div class="elementor-widget-wrap elementor-element-populated">
-														<div class="elementor-element elementor-element-a7816a5 wdp-sticky-section-no elementor-widget elementor-widget-heading"
-															data-id="a7816a5" data-element_type="widget"
-															data-widget_type="heading.default">
+														<div class="elementor-element elementor-element-a7816a5 wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="a7816a5" data-element_type="widget" data-widget_type="heading.default">
 															<div class="elementor-widget-container">
-																<p
-																	class="elementor-heading-title elementor-size-default">
+																<p class="elementor-heading-title elementor-size-default">
 																	*NB: Diharapkan tidak mencantumkan emoticon saat
 																	mengisi ucapan.</p>
 															</div>
 														</div>
-														<div class="elementor-element elementor-element-486eba6e wdp-sticky-section-no elementor-widget elementor-widget-weddingpress-kit2"
-															data-id="486eba6e" data-element_type="widget"
-															data-widget_type="weddingpress-kit2.default">
+														<div class="elementor-element elementor-element-486eba6e wdp-sticky-section-no elementor-widget elementor-widget-weddingpress-kit2" data-id="486eba6e" data-element_type="widget" data-widget_type="weddingpress-kit2.default">
 															<div class="elementor-widget-container">
-																<div class='cui-wrapper cui-facebook cui-border'
-																	style='overflow: hidden;'>
+																<div class='cui-wrapper cui-facebook cui-border' style='overflow: hidden;'>
 																	<div class='cui-wrap-link'>
-																		<div class='header-cui'><a id='cui-link-716'
-																				class='cui-link cui-icon-link cui-icon-link-true auto-load-true'
-																				href='index435f.html?post_id=716&amp;comments=0&amp;get=300&amp;order=DESC'
-																				title='0 Comments'><span>0</span>
+																		<div class='header-cui'><a id='cui-link-716' class='cui-link cui-icon-link cui-icon-link-true auto-load-true' href='index435f.html?post_id=716&amp;comments=0&amp;get=300&amp;order=DESC' title='0 Comments'><span>0</span>
 																				Comments</a></div>
 																	</div><!--.cui-wrap-link-->
-																	<div id='cui-wrap-commnent-716'
-																		class='cui-wrap-comments' style='display:none;'>
-																		<div id='cui-wrap-form-716'
-																			class='cui-clearfix'>
+																	<div id='cui-wrap-commnent-716' class='cui-wrap-comments' style='display:none;'>
+																		<div id='cui-wrap-form-716' class='cui-clearfix'>
 																			<div class="cui-comment-attendence">
-																				<div id="invitation-count-716"
-																					class="cui_comment_count_card_wrap">
-																					<div
-																						class="cui_comment_count_card_row_2">
-																						<div
-																							class="cui_comment_count_card cui_card-hadir">
+																				<div id="invitation-count-716" class="cui_comment_count_card_wrap">
+																					<div class="cui_comment_count_card_row_2">
+																						<div class="cui_comment_count_card cui_card-hadir">
 																							<span>0</span><span>Hadir</span>
 																						</div>
-																						<div
-																							class="cui_comment_count_card cui_card-tidak_hadir">
+																						<div class="cui_comment_count_card cui_card-tidak_hadir">
 																							<span>0</span><span>Tidak
 																								hadir</span>
 																						</div>
@@ -2557,133 +2414,123 @@
 																				</div>
 																			</div>
 																			<div class="cui-clearfix cui-wrap-form ">
-																				<div id='cui-container-form-716'
-																					class='cui-container-form cui-no-login'>
-																					<div id='respond-716'
-																						class='respond cui-clearfix'>
-																						<form
-																							action='https://inv.wekita.id/wp-comments-post.php'
-																							method='post'
-																							id='commentform-716'>
-																							<p
-																								class="comment-form-author cui-field-1">
-																								<input id="author"
-																									name="author"
-																									type="text"
-																									aria-required="true"
-																									class="cui-input"
-																									placeholder="Nama" /><span
-																									class="cui-required">*</span><span
-																									class="cui-error-info cui-error-info-name">Mohon
+																				<div id='cui-container-form-716' class='cui-container-form cui-no-login'>
+																					<div id='respond-716' class='respond cui-clearfix'>
+																						<form action='./' method='post' id='0'>
+																							<p class="comment-form-author cui-field-1">
+																								<input name="author" type="text" aria-required="true" class="cui-input" placeholder="<?= $data ?>" value="<?= $data ?>" id='comentNama' disabled /><span class="cui-required">*</span><span class="cui-error-info cui-error-info-name">Mohon
 																									maaf! Khusus untuk
 																									tamu undangan</span>
 																							</p>
-																							<div
-																								class="cui-wrap-textarea">
-																								<textarea
-																									id="cui-textarea-716"
-																									class="waci_comment cui-textarea autosize-textarea"
-																									name="comment"
-																									aria-required="true"
-																									placeholder="Ucapan"
-																									rows="2"></textarea><span
-																									class="cui-required">*</span><span
-																									class="cui-error-info cui-error-info-text">2
+																							<div class="cui-wrap-textarea">
+																								<textarea id="comentTextarea" class="waci_comment cui-textarea autosize-textarea" name="comment" aria-required="true" placeholder="Ucapan" rows="2"></textarea><span class="cui-required">*</span><span class="cui-error-info cui-error-info-text">2
 																									characters
 																									minimum.</span>
 																							</div>
-																							<div
-																								class="nm-wrap-comments">
+																							<div class="nm-wrap-comments">
 																								<div class="row">
 																								</div>
 																							</div>
-																							<div
-																								class="cui-clearfix cui-wrap-select cui-field-wrap cui-select-attending">
+																							<div class="cui-clearfix cui-wrap-select cui-field-wrap cui-select-attending">
 
-																								<select
-																									class="waci_comment cui-select"
-																									name="konfirmasi"
-																									id="konfirmasi">
-																									<option value=""
-																										disabled
-																										selected>
+																								<select class="waci_comment cui-select" name="konfirmasi" id="konfirmasi">
+																									<option value="" disabled selected>
 																										Konfirmasi
 																										Kehadiran
 																									</option>
 																									</option>
-																									<option
-																										value="Hadir">
+																									<option value="Hadir">
 																										Hadir</option>
-																									<option
-																										value="Tidak hadir">
+																									<option value="Tidak hadir">
 																										Tidak hadir
 																									</option>
-																								</select><span
-																									class="cui-required"></span><span
-																									class="cui-error-info cui-error-info-confirm"></span>
+																								</select><span class="cui-required"></span><span class="cui-error-info cui-error-info-confirm"></span>
 																							</div>
 
 
-																							<div
-																								class='cui-wrap-submit cui-clearfix'>
+																							<div class='cui-wrap-submit cui-clearfix'>
 																								<p class='form-submit'>
-																									<span
-																										class="cui-hide">Do
+																									<span class="cui-hide">Do
 																										not change these
 																										fields
-																										following</span><input
-																										type="text"
-																										class="cui-hide"
-																										name="name"
-																										value="username"><input
-																										type="text"
-																										class="cui-hide"
-																										name="nombre"
-																										value=""><input
-																										type="text"
-																										class="cui-hide"
-																										name="form-cui"
-																										value=""><input
-																										type="button"
-																										class="cui-form-btn cui-cancel-btn"
-																										value="Cancel"><input
-																										name='submit'
-																										id='submit-716'
-																										value='Kirim'
-																										type='submit' /><input
-																										type='hidden'
-																										name='commentpress'
-																										value='true' /><input
-																										type='hidden'
-																										name='comment_post_ID'
-																										value='716'
-																										id='comment_post_ID' />
-																									<input type='hidden'
-																										name='comment_parent'
-																										id='comment_parent'
-																										value='0' />
+																										following</span>
+																									<input type="text" class="cui-hide" name="name" value="username">
+																									<input type="text" class="cui-hide" name="nombre" value="">
+																									<input type="text" class="cui-hide" name="form-cui" value="">
+																									<input type="button" class="cui-form-btn cui-cancel-btn" value="Cancel">
+
 																								</p>
 																							</div>
 																						</form>
+																						<center>
+																						<button id='submit-comment' class="btn btn-primary">KIRIM</button>
+																						</center>
+																						
+																						<script>
+																							$("#submit-comment").click(function() {
+																								console.log($("#comentNama").val());
+																								console.log($("#comentTextarea").val());
+																								$.ajax({
+																									type: "POST",
+																									url: "./add-coment.php",
+																									data: {
+																										nama: $("#comentNama").val(),
+																										content: $("#comentTextarea").val()
+																									},
+																									success: function(data) {
+																										console.log(data);
+																									}
+																									// dataType: dataType
+																								});
+
+																							});
+																						</script>
 																					</div>
 																				</div><!--.cui-container-form-->
 																			</div><!--.cui-clearfix cui-relative-->
 																		</div><!--.cui-wrap-form-->
-																		<div id='cui-comment-status-716'
-																			class='cui-comment-status'></div>
-																		<div id='cui-box' class='cui-box'>
-																			<ul id='cui-container-comment-716'
-																				class='cui-container-comments cui-order-DESC '
-																				data-order='DESC'></ul>
+																		<div id='cui-comment-status-716' class='cui-comment-status'></div>
+																		<div id="cui-box" class="cui-box">
+																			<ul id="cui-container-comment-98931" class="cui-container-comments cui-order-DESC  cui-has-7-comments cui-multiple-comments" data-order="DESC" style="display: block;">
+
+																				<?php while ($coment = mysqli_fetch_array($coments_data)) { ?>
+
+																					<li class="comment even thread-even depth-1 cui-item-comment" data-likes="0">
+																						<div id="cui-comment-58394" class="cui-comment cui-clearfix">
+
+																							<div class="cui-comment-avatar">
+																								<img src="">
+																							</div><!--.cui-comment-avatar-->
+
+																							<div class="cui-comment-content">
+																								<div class="cui-comment-info">
+																									<a class="cui-commenter-name" title="<?= htmlspecialchars($coment['nama'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($coment['nama'], ENT_QUOTES, 'UTF-8') ?></a>
+																
+																								</div><!--.cui-comment-info-->
+																								<div class="cui-comment-text">
+																									<p><?= htmlspecialchars($coment['content'], ENT_QUOTES, 'UTF-8') ?></p>
+																								</div><!--.cui-comment-text-->
+
+																								<div class="cui-comment-actions">
+																									<span class="cui-comment-time"><i class="far fa-clock"></i>
+																										<?= htmlspecialchars($coment['time'], ENT_QUOTES, 'UTF-8') ?> </span>
+																									<!-- <a href="?comment_id=58394&amp;post_id=98931" class="cui-reply-link" id="cui-reply-link-58394">Reply</a> -->
+																								</div><!--.cui-comment-actions-->
+
+																							</div><!--.cui-comment-content-->
+																						</div><!--.cui-comment-->
+																						<!--</li>-->
+																					</li><!-- #comment-## -->
+
+																				<?php } ?>
+																			</ul>
 																		</div>
 																		<div class='cui-holder-716 cui-holder'></div>
 																	</div><!--.cui-wrap-comments-->
 																</div><!--.cui-wrapper-->
 															</div>
 														</div>
-														<div class="elementor-element elementor-element-3a014ac3 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-															data-id="3a014ac3" data-element_type="widget"
-															data-widget_type="spacer.default">
+														<div class="elementor-element elementor-element-3a014ac3 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="3a014ac3" data-element_type="widget" data-widget_type="spacer.default">
 															<div class="elementor-widget-container">
 																<div class="elementor-spacer">
 																	<div class="elementor-spacer-inner"></div>
@@ -2694,18 +2541,14 @@
 												</div>
 											</div>
 										</section>
-										<div class="elementor-element elementor-element-24d7ad5f wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="24d7ad5f" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-24d7ad5f wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="24d7ad5f" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-										<div class="elementor-element elementor-element-75b7b4c6 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-											data-id="75b7b4c6" data-element_type="widget"
-											data-widget_type="spacer.default">
+										<div class="elementor-element elementor-element-75b7b4c6 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="75b7b4c6" data-element_type="widget" data-widget_type="spacer.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-spacer">
 													<div class="elementor-spacer-inner"></div>
@@ -2720,51 +2563,34 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-221c616 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="221c616" data-element_type="section">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-221c616 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="221c616" data-element_type="section">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4f49cc1b wdp-sticky-section-no"
-					data-id="4f49cc1b" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4f49cc1b wdp-sticky-section-no" data-id="4f49cc1b" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-427ee5dc animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image"
-							data-id="427ee5dc" data-element_type="widget"
-							data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-							data-widget_type="image.default">
+						<div class="elementor-element elementor-element-427ee5dc animated-slow wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-image" data-id="427ee5dc" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
 							<div class="elementor-widget-container">
-								<img decoding="async" loading="lazy" width="391" height="398"
-									src="/Assets/images/fototerakhir.png"
-									class="attachment-full size-full wp-image-264" alt=""
-									srcset="/Assets/images/fototerakhir.png 391w, /Assets/images/fototerakhir.png 295w"
-									sizes="(max-width: 391px) 100vw, 391px" />
+								<img decoding="async" loading="lazy" width="391" height="398" src="/Assets/images/fototerakhir.png" class="attachment-full size-full wp-image-264" alt="" srcset="/Assets/images/fototerakhir.png 391w, /Assets/images/fototerakhir.png 295w" sizes="(max-width: 391px) 100vw, 391px" />
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-6630d9fd reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
-							data-id="6630d9fd" data-element_type="widget" data-widget_type="text-editor.default">
+						<div class="elementor-element elementor-element-6630d9fd reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="6630d9fd" data-element_type="widget" data-widget_type="text-editor.default">
 							<div class="elementor-widget-container">
 								<p>Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i
 									berkenan hadir dan memberikan doa restu. Atas kehadiran dan doa restunya, kami
 									mengucapkan terima kasih.</p>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-108d395b reveal wdp-sticky-section-no elementor-widget elementor-widget-heading"
-							data-id="108d395b" data-element_type="widget" data-widget_type="heading.default">
+						<div class="elementor-element elementor-element-108d395b reveal wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="108d395b" data-element_type="widget" data-widget_type="heading.default">
 							<div class="elementor-widget-container">
 								<h2 class="elementor-heading-title elementor-size-default">Wassalamu'alaikum Wr. Wb.
 								</h2>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-1e4da826 wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor"
-							data-id="1e4da826" data-element_type="widget"
-							data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}"
-							data-widget_type="text-editor.default">
+						<div class="elementor-element elementor-element-1e4da826 wdp-sticky-section-no elementor-invisible elementor-widget elementor-widget-text-editor" data-id="1e4da826" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="text-editor.default">
 							<div class="elementor-widget-container">
 								<p>Titik &amp; Jamal</p>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-469c3b80 wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="469c3b80" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-469c3b80 wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="469c3b80" data-element_type="widget" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
@@ -2775,17 +2601,12 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-13e91fc elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="13e91fc" data-element_type="section">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-13e91fc elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="13e91fc" data-element_type="section">
 			<div class="elementor-background-overlay"></div>
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-65fd20a1 wdp-sticky-section-no"
-					data-id="65fd20a1" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-65fd20a1 wdp-sticky-section-no" data-id="65fd20a1" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-56a5164c wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="56a5164c" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-56a5164c wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="56a5164c" data-element_type="widget" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
@@ -2794,26 +2615,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3f1aec33 wdp-sticky-section-no"
-					data-id="3f1aec33" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3f1aec33 wdp-sticky-section-no" data-id="3f1aec33" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-785c54bf wdp-sticky-section-no elementor-widget elementor-widget-heading"
-							data-id="785c54bf" data-element_type="widget" data-widget_type="heading.default">
+						<div class="elementor-element elementor-element-785c54bf wdp-sticky-section-no elementor-widget elementor-widget-heading" data-id="785c54bf" data-element_type="widget" data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default"><span 
-										style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal;">Edited by Nando & Aisya
-										with&nbsp;</span><span
-										style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; background-color:; color: rgb(66, 66, );"><img
-											decoding="async" draggable="false" role="img" class="emoji" alt="❤"
-											src="https://s.w.org/images/core/emoji/13.0.1/svg/2764.svg"></span><span
-										style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; ;">&nbsp;Thanks To Source&nbsp;</span><span
-										style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; ;">Wekita.id</span>
+								<h2 class="elementor-heading-title elementor-size-default"><span style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal;">Edited by Nando & Aisya
+										with&nbsp;</span><span style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; color: rgb(66, 66, );"><img decoding="async" draggable="false" role="img" class="emoji" alt="❤" src="https://s.w.org/images/core/emoji/13.0.1/svg/2764.svg"></span><span style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; ;">&nbsp;Thanks To Source&nbsp;</span><span style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 400; white-space: normal; ;">Wekita.id</span>
 								</h2>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-3e4c9928 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-							data-id="3e4c9928" data-element_type="widget" data-widget_type="social-icons.default">
+						<div class="elementor-element elementor-element-3e4c9928 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="3e4c9928" data-element_type="widget" data-widget_type="social-icons.default">
 							<div class="elementor-widget-container">
 								<!-- <div class="elementor-social-icons-wrapper elementor-grid"> 
 									<span class="elementor-grid-item">
@@ -2831,16 +2642,14 @@
 								</div>-->
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-12b981bb wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="12b981bb" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-12b981bb wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="12b981bb" data-element_type="widget" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-78be60ef wdp-sticky-section-no elementor-widget elementor-widget-html"
-							data-id="78be60ef" data-element_type="widget" id="hide" data-widget_type="html.default">
+						<div class="elementor-element elementor-element-78be60ef wdp-sticky-section-no elementor-widget elementor-widget-html" data-id="78be60ef" data-element_type="widget" id="hide" data-widget_type="html.default">
 							<div class="elementor-widget-container">
 								<script>
 									function reveal() {
@@ -2860,7 +2669,6 @@
 									}
 
 									window.addEventListener("scroll", reveal);
-
 								</script>
 
 								<style>
@@ -2896,7 +2704,6 @@
 									}
 
 									window.addEventListener("scroll", revealin);
-
 								</script>
 
 								<style>
@@ -2914,8 +2721,7 @@
 								</style>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-56aa632d wdp-sticky-section-no elementor-widget elementor-widget-spacer"
-							data-id="56aa632d" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-element elementor-element-56aa632d wdp-sticky-section-no elementor-widget elementor-widget-spacer" data-id="56aa632d" data-element_type="widget" data-widget_type="spacer.default">
 							<div class="elementor-widget-container">
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
@@ -2924,14 +2730,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-7ebb67b9 wdp-sticky-section-no"
-					data-id="7ebb67b9" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-7ebb67b9 wdp-sticky-section-no" data-id="7ebb67b9" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-6f71c585 elementor-view-stacked elementor-shape-circle elementor-widget elementor-widget-weddingpress-audio"
-							data-id="6f71c585" data-element_type="widget"
-							data-settings="{&quot;sticky&quot;:&quot;bottom&quot;,&quot;sticky_offset&quot;:203,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_effects_offset&quot;:0}"
-							data-widget_type="weddingpress-audio.default">
+						<div class="elementor-element elementor-element-6f71c585 elementor-view-stacked elementor-shape-circle elementor-widget elementor-widget-weddingpress-audio" data-id="6f71c585" data-element_type="widget" data-settings="{&quot;sticky&quot;:&quot;bottom&quot;,&quot;sticky_offset&quot;:203,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_effects_offset&quot;:0}" data-widget_type="weddingpress-audio.default">
 							<div class="elementor-widget-container">
 
 								<script>
@@ -2942,8 +2743,7 @@
 								<div id="audio-container" class="audio-box">
 
 									<audio id="song" loop>
-										<source src="/Assets/audios/menikahimu.mp3"
-											type="audio/mp3">
+										<source src="/Assets/audios/menikahimu.mp3" type="audio/mp3">
 									</audio>
 
 									<div class="elementor-icon-wrapper" id="unmute-sound" style="display: none;">
@@ -2966,31 +2766,19 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-672e567a elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="672e567a" data-element_type="section" id="hoho"
-			data-settings="{&quot;sticky&quot;:&quot;bottom&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-672e567a elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="672e567a" data-element_type="section" id="hoho" data-settings="{&quot;sticky&quot;:&quot;bottom&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-63f7260b wdp-sticky-section-no"
-					data-id="63f7260b" data-element_type="column"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-63f7260b wdp-sticky-section-no" data-id="63f7260b" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<section
-							class="elementor-section elementor-inner-section elementor-element elementor-element-505f2ef0 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-							data-id="505f2ef0" data-element_type="section">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-505f2ef0 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="505f2ef0" data-element_type="section">
 							<div class="elementor-container elementor-column-gap-default">
-								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-471b3a0c wdp-sticky-section-no"
-									data-id="471b3a0c" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-471b3a0c wdp-sticky-section-no" data-id="471b3a0c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-628e929e elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="628e929e" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-628e929e elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="628e929e" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-home elementor-animation-pulse-grow elementor-repeater-item-4185e3b"
-															href="#home" target="_blank">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-home elementor-animation-pulse-grow elementor-repeater-item-4185e3b" href="#home" target="_blank">
 															<span class="elementor-screen-only">Home</span>
 															<i class="fas fa-home"></i> </a>
 													</span>
@@ -2999,18 +2787,13 @@
 										</div>
 									</div>
 								</div>
-								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-3011b3fb wdp-sticky-section-no"
-									data-id="3011b3fb" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-3011b3fb wdp-sticky-section-no" data-id="3011b3fb" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-1df5d1d9 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="1df5d1d9" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-1df5d1d9 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="1df5d1d9" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-heart elementor-animation-pulse-grow elementor-repeater-item-4185e3b"
-															href="#mempelai" target="_blank">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-heart elementor-animation-pulse-grow elementor-repeater-item-4185e3b" href="#mempelai" target="_blank">
 															<span class="elementor-screen-only">Heart</span>
 															<i class="far fa-heart"></i> </a>
 													</span>
@@ -3019,38 +2802,14 @@
 										</div>
 									</div>
 								</div>
-								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-515a6b12 wdp-sticky-section-no"
-									data-id="515a6b12" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+
+								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-29001aa1 wdp-sticky-section-no" data-id="29001aa1" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-686e382f elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="686e382f" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-7cd6fef6 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="7cd6fef6" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-calendar-alt elementor-animation-pulse-grow elementor-repeater-item-4185e3b"
-															href="#date" target="_blank">
-															<span class="elementor-screen-only">Calendar-alt</span>
-															<i class="far fa-calendar-alt"></i> </a>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-29001aa1 wdp-sticky-section-no"
-									data-id="29001aa1" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-7cd6fef6 elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="7cd6fef6" data-element_type="widget"
-											data-widget_type="social-icons.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-social-icons-wrapper elementor-grid">
-													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-images elementor-animation-pulse-grow elementor-repeater-item-4185e3b"
-															href="#galeri" target="_blank">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-images elementor-animation-pulse-grow elementor-repeater-item-4185e3b" href="#galeri" target="_blank">
 															<span class="elementor-screen-only">Images</span>
 															<i class="far fa-images"></i> </a>
 													</span>
@@ -3059,18 +2818,29 @@
 										</div>
 									</div>
 								</div>
-								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-1555bb76 wdp-sticky-section-no"
-									data-id="1555bb76" data-element_type="column"
-									data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+
+								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-515a6b12 wdp-sticky-section-no" data-id="515a6b12" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 									<div class="elementor-widget-wrap elementor-element-populated">
-										<div class="elementor-element elementor-element-267b91dc elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons"
-											data-id="267b91dc" data-element_type="widget"
-											data-widget_type="social-icons.default">
+										<div class="elementor-element elementor-element-686e382f elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="686e382f" data-element_type="widget" data-widget_type="social-icons.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-social-icons-wrapper elementor-grid">
 													<span class="elementor-grid-item">
-														<a class="elementor-icon elementor-social-icon elementor-social-icon-comment-dots elementor-animation-pulse-grow elementor-repeater-item-4185e3b"
-															href="#ucapan" target="_blank">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-calendar-alt elementor-animation-pulse-grow elementor-repeater-item-4185e3b" href="#date" target="_blank">
+															<span class="elementor-screen-only">Calendar-alt</span>
+															<i class="far fa-calendar-alt"></i> </a>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-1555bb76 wdp-sticky-section-no" data-id="1555bb76" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+									<div class="elementor-widget-wrap elementor-element-populated">
+										<div class="elementor-element elementor-element-267b91dc elementor-shape-rounded elementor-grid-0 e-grid-align-center wdp-sticky-section-no elementor-widget elementor-widget-social-icons" data-id="267b91dc" data-element_type="widget" data-widget_type="social-icons.default">
+											<div class="elementor-widget-container">
+												<div class="elementor-social-icons-wrapper elementor-grid">
+													<span class="elementor-grid-item">
+														<a class="elementor-icon elementor-social-icon elementor-social-icon-comment-dots elementor-animation-pulse-grow elementor-repeater-item-4185e3b" href="#ucapan" target="_blank">
 															<span class="elementor-screen-only">Comment-dots</span>
 															<i class="far fa-comment-dots"></i> </a>
 													</span>
@@ -3085,27 +2855,52 @@
 				</div>
 			</div>
 		</section>
-		<section
-			class="hide elementor-section elementor-top-section elementor-element elementor-element-1a746962 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no"
-			data-id="1a746962" data-element_type="section" id="hide">
+		<section class="hide elementor-section elementor-top-section elementor-element elementor-element-1a746962 elementor-section-boxed elementor-section-height-default elementor-section-height-default wdp-sticky-section-no" data-id="1a746962" data-element_type="section" id="hide">
 			<div class="elementor-container elementor-column-gap-default">
-				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3f47a6d3 wdp-sticky-section-no"
-					data-id="3f47a6d3" data-element_type="column">
+				<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3f47a6d3 wdp-sticky-section-no" data-id="3f47a6d3" data-element_type="column">
 					<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-740e21b hide wdp-sticky-section-no elementor-widget elementor-widget-html"
-							data-id="740e21b" data-element_type="widget" data-widget_type="html.default">
+						<div class="elementor-element elementor-element-740e21b hide wdp-sticky-section-no elementor-widget elementor-widget-html" data-id="740e21b" data-element_type="widget" data-widget_type="html.default">
 							<div class="elementor-widget-container">
-								<script>var x = document.getElementById("song");
-									window.onbeforeunload = function () { window.scrollTo(0, 0) }; disableScrolling();
-									document.body.style.overflowY = "hidden"; document.body.style.heigth = "100vh"; document.getElementById("tombol-buka")
-										.onclick = function () { myFunction() }; function myFunction() {
-											document.body.style.overflowY = "unset";
-											document.getElementById("tombol-buka").style.visibility = "hidden"; enableScrolling();
-											playAudio()
-										} function disableScrolling() {
-											var x = window.scrollX; var y = window.scrollY;
-											window.onscroll = function () { window.scrollTo(x, y) }
-										} function enableScrolling() { window.onscroll = function () { } } function playAudio() { x.play() } function pauseAudio() { x.pause() }</script>
+								<script>
+									var x = document.getElementById("song");
+									window.onbeforeunload = function() {
+										window.scrollTo(0, 0)
+									};
+									disableScrolling();
+									document.body.style.overflowY = "hidden";
+									document.body.style.heigth = "100vh";
+									document.getElementById("tombol-buka")
+										.onclick = function() {
+											myFunction()
+										};
+
+									function myFunction() {
+										document.body.style.overflowY = "unset";
+										document.getElementById("tombol-buka").style.visibility = "hidden";
+										enableScrolling();
+										playAudio()
+									}
+
+									function disableScrolling() {
+										var x = window.scrollX;
+										var y = window.scrollY;
+										window.onscroll = function() {
+											window.scrollTo(x, y)
+										}
+									}
+
+									function enableScrolling() {
+										window.onscroll = function() {}
+									}
+
+									function playAudio() {
+										x.play()
+									}
+
+									function pauseAudio() {
+										x.pause()
+									}
+								</script>
 							</div>
 						</div>
 					</div>
@@ -3193,67 +2988,279 @@
 			</div>
 		</section> -->
 	</div>
-	<link rel='stylesheet' id='e-animations-css'
-		href='../wp-content/plugins/elementor/assets/lib/animations/animations.min6319.css?ver=3.15.2' media='all' />
+	<link rel='stylesheet' id='e-animations-css' href='../wp-content/plugins/elementor/assets/lib/animations/animations.min6319.css?ver=3.15.2' media='all' />
 	<script src='../wp-content/plugins/weddingpress/assets/js/wdp-swiper.min.js' id='wdp-swiper-js-js'></script>
 	<script src='../wp-content/plugins/weddingpress/assets/js/qr-code.js' id='weddingpress-qr-js'></script>
 	<script src='../wp-content/plugins/weddingpress/assets/js/wdp-horizontal.js' id='wdp-horizontal-js-js'></script>
-	<script src='../wp-content/plugins/weddingpress/assets/js/exad-scripts.min9b4a.js?ver=3.0.11'
-		id='exad-main-script-js'></script>
+	<script src='../wp-content/plugins/weddingpress/assets/js/exad-scripts.min9b4a.js?ver=3.0.11' id='exad-main-script-js'></script>
 	<script id='cui_js_script-js-extra'>
-		var CUI_WP = { "ajaxurl": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php", "cuiNonce": "3bbcb40beb", "jpages": "true", "jPagesNum": "10", "textCounter": "true", "textCounterNum": "500", "widthWrap": "", "autoLoad": "true", "thanksComment": "Thanks for your comment!", "thanksReplyComment": "Thanks for answering the comment!", "duplicateComment": "You might have left one of the fields blank, or duplicate comments", "accept": "Accept", "cancel": "Cancel", "reply": "Reply", "textWriteComment": "Ucapan", "classPopularComment": "cui-popular-comment", "textToDisplay": "Text to display", "textCharacteresMin": "2 characters minimum", "textNavNext": "Next", "textNavPrev": "Previous", "textMsgDeleteComment": "Do you want delete this comment?", "textLoadMore": "Load more" };
+		var CUI_WP = {
+			"ajaxurl": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php",
+			"cuiNonce": "3bbcb40beb",
+			"jpages": "true",
+			"jPagesNum": "10",
+			"textCounter": "true",
+			"textCounterNum": "500",
+			"widthWrap": "",
+			"autoLoad": "true",
+			"thanksComment": "Thanks for your comment!",
+			"thanksReplyComment": "Thanks for answering the comment!",
+			"duplicateComment": "You might have left one of the fields blank, or duplicate comments",
+			"accept": "Accept",
+			"cancel": "Cancel",
+			"reply": "Reply",
+			"textWriteComment": "Ucapan",
+			"classPopularComment": "cui-popular-comment",
+			"textToDisplay": "Text to display",
+			"textCharacteresMin": "2 characters minimum",
+			"textNavNext": "Next",
+			"textNavPrev": "Previous",
+			"textMsgDeleteComment": "Do you want delete this comment?",
+			"textLoadMore": "Load more"
+		};
 	</script>
-	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/cui_script8a54.js?ver=1.0.0'
-		id='cui_js_script-js'></script>
-	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.jPages.minac14.js?ver=0.7'
-		id='cui_jPages-js'></script>
-	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.textareaCounterd5f7.js?ver=2.0'
-		id='cui_textCounter-js'></script>
-	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.placeholder.min5d0a.js?ver=2.0.7'
-		id='cui_placeholder-js'></script>
-	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/autosize.mind50e.js?ver=1.14'
-		id='cui_autosize-js'></script>
-	<script src='../wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0'
-		id='hello-theme-frontend-js'></script>
+	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/cui_script8a54.js?ver=1.0.0' id='cui_js_script-js'></script>
+	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.jPages.minac14.js?ver=0.7' id='cui_jPages-js'></script>
+	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.textareaCounterd5f7.js?ver=2.0' id='cui_textCounter-js'></script>
+	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/jquery.placeholder.min5d0a.js?ver=2.0.7' id='cui_placeholder-js'></script>
+	<script src='../wp-content/plugins/weddingpress/addons/comment-kit2/js/libs/autosize.mind50e.js?ver=1.14' id='cui_autosize-js'></script>
+	<script src='../wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0' id='hello-theme-frontend-js'></script>
 	<script src='../wp-includes/js/imagesloaded.mineda1.js?ver=4.1.4' id='imagesloaded-js'></script>
-	<script src='../wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min5829.js?ver=3.15.1'
-		id='elementor-pro-webpack-runtime-js'></script>
-	<script src='../wp-content/plugins/elementor/assets/js/webpack.runtime.min6319.js?ver=3.15.2'
-		id='elementor-webpack-runtime-js'></script>
-	<script src='../wp-content/plugins/elementor/assets/js/frontend-modules.min6319.js?ver=3.15.2'
-		id='elementor-frontend-modules-js'></script>
-	<script src='../wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2'
-		id='wp-polyfill-inert-js'></script>
-	<script src='../wp-includes/js/dist/vendor/regenerator-runtime.min8fa4.js?ver=0.13.11'
-		id='regenerator-runtime-js'></script>
+	<script src='../wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min5829.js?ver=3.15.1' id='elementor-pro-webpack-runtime-js'></script>
+	<script src='../wp-content/plugins/elementor/assets/js/webpack.runtime.min6319.js?ver=3.15.2' id='elementor-webpack-runtime-js'></script>
+	<script src='../wp-content/plugins/elementor/assets/js/frontend-modules.min6319.js?ver=3.15.2' id='elementor-frontend-modules-js'></script>
+	<script src='../wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
+	<script src='../wp-includes/js/dist/vendor/regenerator-runtime.min8fa4.js?ver=0.13.11' id='regenerator-runtime-js'></script>
 	<script src='../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
 	<script src='../wp-includes/js/dist/hooks.min2ebd.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
 	<script src='../wp-includes/js/dist/i18n.minf92f.js?ver=7701b0c3857f914212ef' id='wp-i18n-js'></script>
 	<script id="wp-i18n-js-after">
-		wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+		wp.i18n.setLocaleData({
+			'text direction\u0004ltr': ['ltr']
+		});
 	</script>
 	<script id="elementor-pro-frontend-js-before">
-		var ElementorProFrontendConfig = { "ajaxurl": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php", "nonce": "5adf89674f", "urls": { "assets": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor-pro\/assets\/", "rest": "https:\/\/inv.wekita.id\/wp-json\/" }, "shareButtonsNetworks": { "facebook": { "title": "Facebook", "has_counter": true }, "twitter": { "title": "Twitter" }, "linkedin": { "title": "LinkedIn", "has_counter": true }, "pinterest": { "title": "Pinterest", "has_counter": true }, "reddit": { "title": "Reddit", "has_counter": true }, "vk": { "title": "VK", "has_counter": true }, "odnoklassniki": { "title": "OK", "has_counter": true }, "tumblr": { "title": "Tumblr" }, "digg": { "title": "Digg" }, "skype": { "title": "Skype" }, "stumbleupon": { "title": "StumbleUpon", "has_counter": true }, "mix": { "title": "Mix" }, "telegram": { "title": "Telegram" }, "pocket": { "title": "Pocket", "has_counter": true }, "xing": { "title": "XING", "has_counter": true }, "whatsapp": { "title": "WhatsApp" }, "email": { "title": "Email" }, "print": { "title": "Print" } }, "facebook_sdk": { "lang": "id_ID", "app_id": "" }, "lottie": { "defaultAnimationUrl": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json" } };
+		var ElementorProFrontendConfig = {
+			"ajaxurl": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php",
+			"nonce": "5adf89674f",
+			"urls": {
+				"assets": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor-pro\/assets\/",
+				"rest": "https:\/\/inv.wekita.id\/wp-json\/"
+			},
+			"shareButtonsNetworks": {
+				"facebook": {
+					"title": "Facebook",
+					"has_counter": true
+				},
+				"twitter": {
+					"title": "Twitter"
+				},
+				"linkedin": {
+					"title": "LinkedIn",
+					"has_counter": true
+				},
+				"pinterest": {
+					"title": "Pinterest",
+					"has_counter": true
+				},
+				"reddit": {
+					"title": "Reddit",
+					"has_counter": true
+				},
+				"vk": {
+					"title": "VK",
+					"has_counter": true
+				},
+				"odnoklassniki": {
+					"title": "OK",
+					"has_counter": true
+				},
+				"tumblr": {
+					"title": "Tumblr"
+				},
+				"digg": {
+					"title": "Digg"
+				},
+				"skype": {
+					"title": "Skype"
+				},
+				"stumbleupon": {
+					"title": "StumbleUpon",
+					"has_counter": true
+				},
+				"mix": {
+					"title": "Mix"
+				},
+				"telegram": {
+					"title": "Telegram"
+				},
+				"pocket": {
+					"title": "Pocket",
+					"has_counter": true
+				},
+				"xing": {
+					"title": "XING",
+					"has_counter": true
+				},
+				"whatsapp": {
+					"title": "WhatsApp"
+				},
+				"email": {
+					"title": "Email"
+				},
+				"print": {
+					"title": "Print"
+				}
+			},
+			"facebook_sdk": {
+				"lang": "id_ID",
+				"app_id": ""
+			},
+			"lottie": {
+				"defaultAnimationUrl": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"
+			}
+		};
 	</script>
-	<script src='../wp-content/plugins/elementor-pro/assets/js/frontend.min5829.js?ver=3.15.1'
-		id='elementor-pro-frontend-js'></script>
-	<script src='../wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2'
-		id='elementor-waypoints-js'></script>
+	<script src='../wp-content/plugins/elementor-pro/assets/js/frontend.min5829.js?ver=3.15.1' id='elementor-pro-frontend-js'></script>
+	<script src='../wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2' id='elementor-waypoints-js'></script>
 	<script src='../wp-includes/js/jquery/ui/core.min3f14.js?ver=1.13.2' id='jquery-ui-core-js'></script>
 	<script id="elementor-frontend-js-before">
-		var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Bagikan di Facebook", "shareOnTwitter": "Bagikan di Twitter", "pinIt": "Buat Pin", "download": "Unduh", "downloadImage": "Unduh gambar", "fullscreen": "Layar Penuh", "zoom": "Perbesar", "share": "Bagikan", "playVideo": "Putar Video", "previous": "Sebelumnya", "next": "Selanjutnya", "close": "Tutup", "a11yCarouselWrapperAriaLabel": "Carousel | Horizontal scrolling: Arrow Left & Right", "a11yCarouselPrevSlideMessage": "Previous slide", "a11yCarouselNextSlideMessage": "Next slide", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 767, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Layar lebar", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } } }, "version": "3.15.2", "is_static": false, "experimentalFeatures": { "e_dom_optimization": true, "e_optimized_assets_loading": true, "e_optimized_css_loading": true, "additional_custom_breakpoints": true, "e_swiper_latest": true, "theme_builder_v2": true, "hello-theme-header-footer": true, "landing-pages": true, "page-transitions": true, "notes": true, "loop": true, "form-submissions": true, "e_scroll_snap": true }, "urls": { "assets": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor\/assets\/" }, "swiperClass": "swiper", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description", "hello_header_logo_type": "title", "hello_footer_logo_type": "logo" }, "post": { "id": 716, "title": "Undangan%20Website%20Tema%2005", "excerpt": "", "featuredImage": "https:\/\/inv.wekita.id\/wp-content\/uploads\/2023\/05\/Slide5.webp" } };
+		var elementorFrontendConfig = {
+			"environmentMode": {
+				"edit": false,
+				"wpPreview": false,
+				"isScriptDebug": false
+			},
+			"i18n": {
+				"shareOnFacebook": "Bagikan di Facebook",
+				"shareOnTwitter": "Bagikan di Twitter",
+				"pinIt": "Buat Pin",
+				"download": "Unduh",
+				"downloadImage": "Unduh gambar",
+				"fullscreen": "Layar Penuh",
+				"zoom": "Perbesar",
+				"share": "Bagikan",
+				"playVideo": "Putar Video",
+				"previous": "Sebelumnya",
+				"next": "Selanjutnya",
+				"close": "Tutup",
+				"a11yCarouselWrapperAriaLabel": "Carousel | Horizontal scrolling: Arrow Left & Right",
+				"a11yCarouselPrevSlideMessage": "Previous slide",
+				"a11yCarouselNextSlideMessage": "Next slide",
+				"a11yCarouselFirstSlideMessage": "This is the first slide",
+				"a11yCarouselLastSlideMessage": "This is the last slide",
+				"a11yCarouselPaginationBulletMessage": "Go to slide"
+			},
+			"is_rtl": false,
+			"breakpoints": {
+				"xs": 0,
+				"sm": 480,
+				"md": 768,
+				"lg": 1025,
+				"xl": 1440,
+				"xxl": 1600
+			},
+			"responsive": {
+				"breakpoints": {
+					"mobile": {
+						"label": "Mobile Portrait",
+						"value": 767,
+						"default_value": 767,
+						"direction": "max",
+						"is_enabled": true
+					},
+					"mobile_extra": {
+						"label": "Mobile Landscape",
+						"value": 880,
+						"default_value": 880,
+						"direction": "max",
+						"is_enabled": false
+					},
+					"tablet": {
+						"label": "Tablet Portrait",
+						"value": 1024,
+						"default_value": 1024,
+						"direction": "max",
+						"is_enabled": true
+					},
+					"tablet_extra": {
+						"label": "Tablet Landscape",
+						"value": 1200,
+						"default_value": 1200,
+						"direction": "max",
+						"is_enabled": false
+					},
+					"laptop": {
+						"label": "Laptop",
+						"value": 1366,
+						"default_value": 1366,
+						"direction": "max",
+						"is_enabled": false
+					},
+					"widescreen": {
+						"label": "Layar lebar",
+						"value": 2400,
+						"default_value": 2400,
+						"direction": "min",
+						"is_enabled": false
+					}
+				}
+			},
+			"version": "3.15.2",
+			"is_static": false,
+			"experimentalFeatures": {
+				"e_dom_optimization": true,
+				"e_optimized_assets_loading": true,
+				"e_optimized_css_loading": true,
+				"additional_custom_breakpoints": true,
+				"e_swiper_latest": true,
+				"theme_builder_v2": true,
+				"hello-theme-header-footer": true,
+				"landing-pages": true,
+				"page-transitions": true,
+				"notes": true,
+				"loop": true,
+				"form-submissions": true,
+				"e_scroll_snap": true
+			},
+			"urls": {
+				"assets": "https:\/\/inv.wekita.id\/wp-content\/plugins\/elementor\/assets\/"
+			},
+			"swiperClass": "swiper",
+			"settings": {
+				"page": [],
+				"editorPreferences": []
+			},
+			"kit": {
+				"active_breakpoints": ["viewport_mobile", "viewport_tablet"],
+				"global_image_lightbox": "yes",
+				"lightbox_enable_counter": "yes",
+				"lightbox_enable_fullscreen": "yes",
+				"lightbox_enable_zoom": "yes",
+				"lightbox_enable_share": "yes",
+				"lightbox_title_src": "title",
+				"lightbox_description_src": "description",
+				"hello_header_logo_type": "title",
+				"hello_footer_logo_type": "logo"
+			},
+			"post": {
+				"id": 716,
+				"title": "Undangan%20Website%20Tema%2005",
+				"excerpt": "",
+				"featuredImage": "https:\/\/inv.wekita.id\/wp-content\/uploads\/2023\/05\/Slide5.webp"
+			}
+		};
 	</script>
-	<script src='../wp-content/plugins/elementor/assets/js/frontend.min6319.js?ver=3.15.2'
-		id='elementor-frontend-js'></script>
-	<script src='../wp-content/plugins/elementor-pro/assets/js/elements-handlers.min5829.js?ver=3.15.1'
-		id='pro-elements-handlers-js'></script>
-	<script src='../wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min5829.js?ver=3.15.1'
-		id='e-sticky-js'></script>
+	<script src='../wp-content/plugins/elementor/assets/js/frontend.min6319.js?ver=3.15.2' id='elementor-frontend-js'></script>
+	<script src='../wp-content/plugins/elementor-pro/assets/js/elements-handlers.min5829.js?ver=3.15.1' id='pro-elements-handlers-js'></script>
+	<script src='../wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min5829.js?ver=3.15.1' id='e-sticky-js'></script>
 	<script id='weddingpress-wdp-js-extra'>
-		var cevar = { "ajax_url": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php", "plugin_url": "https:\/\/inv.wekita.id\/wp-content\/plugins\/weddingpress\/" };
+		var cevar = {
+			"ajax_url": "https:\/\/inv.wekita.id\/wp-admin\/admin-ajax.php",
+			"plugin_url": "https:\/\/inv.wekita.id\/wp-content\/plugins\/weddingpress\/"
+		};
 	</script>
-	<script src='../wp-content/plugins/weddingpress/assets/js/wdp.min9b4a.js?ver=3.0.11'
-		id='weddingpress-wdp-js'></script>
+	<script src='../wp-content/plugins/weddingpress/assets/js/wdp.min9b4a.js?ver=3.0.11' id='weddingpress-wdp-js'></script>
 	<script src='../wp-content/plugins/weddingpress/assets/js/guest-form9b4a.js?ver=3.0.11' id='kirim-kit-js'></script>
 </body>
 
