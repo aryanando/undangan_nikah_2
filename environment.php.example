@@ -1,0 +1,3 @@
+<?php  
+    $base_url = "http://tema-05.test";
+?>

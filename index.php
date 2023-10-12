@@ -1,6 +1,7 @@
 <?php
 
 include_once("./config-database.php");
+include_once("./environment.php");
 
 $coments_data = mysqli_query($mysqli, "SELECT * FROM coments ORDER BY id DESC");
 
@@ -2472,7 +2473,7 @@ if (isset($_GET['to'])) {
 																								console.log($("#comentTextarea").val());
 																								$.ajax({
 																									type: "POST",
-																									url: "./add-coment.php",
+																									url: "<?= $base_url ?>/add-coment.php",
 																									data: {
 																										nama: $("#comentNama").val(),
 																										content: $("#comentTextarea").val()
