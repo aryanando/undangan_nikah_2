@@ -1717,7 +1717,7 @@ if (isset($_GET['to'])) {
 										</div>
 										<div class="elementor-element elementor-element-3f31cbd9 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="3f31cbd9" data-element_type="widget" data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
-												<p class="italic mb-4">Pukul 14.00 WIB</p>
+												<p class="italic mb-4">Pukul 14.00 - 21.00 WIB</p>
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-12e24ee3 reveal wdp-sticky-section-no elementor-widget elementor-widget-text-editor" data-id="12e24ee3" data-element_type="widget" data-widget_type="text-editor.default">
